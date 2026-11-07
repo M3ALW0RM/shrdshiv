@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ORACLE//ZERO r10 Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Libre+Franklin:wght@400;600;800&display=swap">
+<style>
+/* Layout: a clean corporate release document: white page, cold Kestrel blue, a classification bar, numbered sections and spec tables. Committed single light look. */
+:root{
+  --desk:#c9d2d9; --page:#fbfcfd; --ink:#1b2a38; --muted:#5d6b78; --blue:#1d4f7a; --ice:#e6eef5; --rule:#d5dde4; --stamp:#b3261a;
+  --f-body:"Libre Franklin","Helvetica Neue",Arial,sans-serif; --f-mono:"Space Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--desk)}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.6 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.doc{max-width:840px;margin:0 auto;background:var(--page);box-shadow:0 12px 40px #1b2a3833}
+.class{background:var(--stamp);color:#fff;font:700 12px var(--f-mono);letter-spacing:.2em;text-align:center;padding:5px 10px}
+.cover{padding:34px 40px 24px;border-bottom:4px solid var(--blue);display:grid;gap:6px}
+.cover small{font:700 12px var(--f-mono);letter-spacing:.18em;color:var(--blue)}
+.cover h1{margin:0;font:800 clamp(34px,7vw,56px)/1 var(--f-body);letter-spacing:-.01em}
+.cover h1 span{color:var(--blue)}
+.cover p{margin:4px 0 0;color:var(--muted);max-width:58ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:10px;font:400 12.5px var(--f-mono);color:var(--muted)}
+main{padding:28px 40px 36px;display:grid;gap:26px}
+@media (max-width:560px){.cover,main{padding-left:20px;padding-right:20px}}
+section{display:grid;gap:10px}
+h2{margin:0;font:800 20px var(--f-body);display:flex;gap:12px;align-items:baseline}
+h2 span{font:700 14px var(--f-mono);color:var(--blue)}
+p{margin:0;max-width:66ch}
+ul{margin:0;padding-left:20px;display:grid;gap:5px;max-width:64ch}
+.callout{background:var(--ice);border-left:4px solid var(--blue);padding:10px 14px}
+.callout b{font-family:var(--f-mono);font-size:13px;letter-spacing:.08em}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font:700 11.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+td.k{font-family:var(--f-mono);font-size:13.5px;white-space:nowrap}
+.tw{overflow-x:auto}
+.glyphs{font:700 18px var(--f-mono)}
+footer{padding:16px 40px 26px;color:var(--muted);font:12.5px var(--f-mono);border-top:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="class">KESTREL DATASYSTEMS · COUNTER-INTRUSION · INTERNAL</div>
+  <header class="cover">
+    <small>RELEASE NOTES AND OPERATOR MANUAL</small>
+    <h1>ORACLE//ZERO <span>r10 XJ</span></h1>
+    <p>The ORACLE engine rebuilt for Tianshu's Xuanji OS. Same analysis, full graphical interface, and a thermal profile the ARCHON-7 can live with.</p>
+    <div class="meta"><span>BUILD r10.3-XJ</span><span>TARGET TIANSHU ARCHON-7 · XJ3</span><span>SUPERSEDES r9 (DS-4)</span></div>
+  </header>
+  <main>
+    <section>
+      <h2><span>1</span>What changed from r9</h2>
+      <ul>
+        <li><b>Native XJ3 build.</b> r10 runs directly on Xuanji OS. It does not go through the DS-4 emulator, so it no longer overheats the host.</li>
+        <li><b>Graphical interface.</b> The full ARCHON-7 screen: a map of the shard, a lock view with candidate counts, and a log window.</li>
+        <li><b>Same engine.</b> Estimates, the solver and zero-trace cracking behave exactly as in r9.</li>
+        <li><b>Not for the DS-4.</b> A DS-4 rejects r10. Keep r9 for consumer hardware.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span>2</span>On insert</h2>
+      <p>ORACLE identifies the shard's cipher by its real designation, with its origin and how confident the identification is, then shows every sector's difficulty and contents automatically. You never pay for a map or content scan.</p>
+    </section>
+
+    <section>
+      <h2><span>3</span>Cracking a lock</h2>
+      <ul>
+        <li>Feedback is always positional, even on locks that only report totals. Marks: <span class="glyphs">■</span> right symbol in the right place, <span class="glyphs">□</span> right symbol in the wrong place, <span class="glyphs">.</span> not in the code.</li>
+        <li>Symbols that have been ruled out are struck out for you.</li>
+        <li>ORACLE counts the codes still possible after every guess and estimates how many guesses each sector will take.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span>4</span>The solver</h2>
+      <p>Press # three times with nothing typed to ask for a suggestion. ORACLE proposes a full next guess for 2 juice, up to 3 times per shard, once per guess.</p>
+      <div class="callout"><p><b>WITH A CO-PROCESSOR</b> the solver becomes oracle-class: suggestions are free and unlimited, but they are blocked on level 6 locks and may trip countermeasures on level 5.</p></div>
+    </section>
+
+    <section>
+      <h2><span>5</span>Zero trace</h2>
+      <p>Sectors opened by ORACLE carry no residue. The owner's reader shows no integrity error for them.</p>
+    </section>
+
+    <section>
+      <h2><span>6</span>Reference</h2>
+      <div class="tw"><table>
+        <tr><th>Feature</th><th>r10 XJ</th></tr>
+        <tr><td class="k">ANALYZER</td><td>Positional feedback on every lock</td></tr>
+        <tr><td class="k">ELIM LOG</td><td>Yes</td></tr>
+        <tr><td class="k">SCANS</td><td>Cheap; map and content tags automatic</td></tr>
+        <tr><td class="k">PROBE</td><td>Level 3 solver: full guess, 2 juice, 3 uses per shard</td></tr>
+        <tr><td class="k">TRACE</td><td>None</td></tr>
+        <tr><td class="k">PLATFORM</td><td>Tianshu ARCHON-7 only</td></tr>
+      </table></div>
+    </section>
+  </main>
+  <footer>Kestrel DataSystems, Havenport. If you are reading this outside a Kestrel facility, this document was stolen. Please return it.</footer>
+</div>
+</body>
+</html>

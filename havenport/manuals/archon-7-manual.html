@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ARCHON-7 User Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500&family=Saira+Condensed:wght@500;700&display=swap">
+<style>
+/* Layout: an export-edition guide printed on cream stock with a lacquer-red cover band, gold rules and paired Chinese/English headings. Committed single look. */
+:root{
+  --desk:#1b1312; --paper:#f6efe2; --red:#8a1f1f; --red-2:#6d1616; --gold:#c9a24a; --ink:#211816; --muted:#6b5d57; --rule:#dccdb0; --scr:#070a0f; --scr-ink:#cfeeff; --cyan:#3fd6ff;
+  --f-zh:"Noto Serif SC","Songti SC",serif; --f-head:"Saira Condensed","Arial Narrow",sans-serif; --f-body:"Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--desk)}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.65 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.book{max-width:860px;margin:0 auto;background:var(--paper);box-shadow:0 24px 60px #000c}
+.cover{background:linear-gradient(160deg,var(--red),var(--red-2));color:#f8e9c4;padding:40px 40px 30px;position:relative;overflow:hidden}
+.cover::after{content:"天枢";position:absolute;right:-10px;bottom:-40px;font:900 180px/1 var(--f-zh);color:#ffffff10}
+.cover .zh{font:900 clamp(40px,9vw,72px)/1 var(--f-zh);letter-spacing:.08em;color:var(--gold)}
+.cover h1{margin:6px 0 0;font:700 clamp(26px,5vw,40px)/1.05 var(--f-head);letter-spacing:.06em;text-transform:uppercase}
+.cover p{margin:10px 0 0;max-width:54ch;opacity:.9}
+.cover .tag{display:inline-block;margin-top:14px;border:1px solid var(--gold);color:var(--gold);padding:2px 10px;font:500 13px var(--f-head);letter-spacing:.2em}
+main{padding:30px 40px 36px;display:grid;gap:28px}
+@media (max-width:560px){.cover,main{padding-left:20px;padding-right:20px}}
+section{display:grid;gap:10px}
+h2{margin:0;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-bottom:2px solid var(--gold);padding-bottom:6px}
+h2 .zh{font:900 24px var(--f-zh);color:var(--red)}
+h2 .en{font:700 20px var(--f-head);letter-spacing:.08em;text-transform:uppercase}
+p{margin:0;max-width:68ch}
+ul,ol{margin:0;padding-left:22px;display:grid;gap:5px;max-width:66ch}
+.screen{background:var(--scr);border-radius:8px;padding:12px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:8px;font:13px/1.4 var(--f-head);letter-spacing:.05em;color:var(--scr-ink)}
+@media (max-width:560px){.screen{grid-template-columns:minmax(0,1fr)}}
+.win{border:1px solid #2a3a4a;border-radius:4px;padding:8px;min-height:60px}
+.win b{display:block;color:var(--cyan);font-weight:700;margin-bottom:4px}
+.side{display:grid;gap:8px}
+.keys{display:flex;flex-wrap:wrap;gap:6px}
+.keys span{background:#0d1a10;color:#8dffb0;border:1px solid #2c4a35;border-radius:3px;padding:3px 8px;font:500 12px var(--f-head);letter-spacing:.08em}
+.box{background:#efe4cf;border-left:4px solid var(--red);padding:10px 14px}
+.box b{font-family:var(--f-head);letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font:700 12px var(--f-head);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tw{overflow-x:auto}
+footer{padding:18px 40px 30px;color:var(--muted);font-size:13px;border-top:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="book">
+  <header class="cover">
+    <div class="zh">执政官-7</div>
+    <h1>Tianshu ARCHON-7 User Guide</h1>
+    <p>Runner-grade cyberdeck. Xuanji OS 玄机. Designed in Shenzhen for people who need to see everything at once.</p>
+    <span class="tag">EXPORT EDITION · XJ3</span>
+  </header>
+  <main>
+    <section>
+      <h2><span class="zh">概述</span><span class="en">Overview</span></h2>
+      <p>The ARCHON-7 is a full workstation in a deck. It runs Xuanji OS on a multi-window colour screen, has seven programmable side keys and five hardware bays, and runs cooler and longer than consumer decks.</p>
+      <p>With no software in the AUX port, it opens shards with <b>DataView 数据视图</b>, Tianshu's graphical bilingual reader. Shards, keys and status work as they do on any licensed deck.</p>
+    </section>
+
+    <section>
+      <h2><span class="zh">屏幕</span><span class="en">The screen</span></h2>
+      <div class="screen" aria-label="ARCHON-7 screen layout">
+        <div class="win"><b>MAIN</b>The running program: DataView, or the cartridge in the AUX port.</div>
+        <div class="side">
+          <div class="win"><b>SYS</b>Temperature, hardware bays and the module in the AUX port.</div>
+          <div class="win"><b>MEDIA</b>What's playing, for voice recordings.</div>
+          <div class="win"><b>LOG</b>A running log of what the deck does.</div>
+        </div>
+      </div>
+      <ul>
+        <li>Click a side window's title bar to collapse it onto the sidebar. Click its tab on the sidebar to bring it back.</li>
+        <li>Native software can use the whole screen and open its own windows.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="zh">侧键</span><span class="en">Side keys</span></h2>
+      <p>Seven keys run down the side of the screen. Each has a small display that shows what the key does right now, and their jobs change with what's on screen: confirm, back, page, language, and whatever the running software needs.</p>
+      <div class="keys" aria-hidden="true"><span>CONFIRM</span><span>BACK</span><span>NEXT</span><span>中文 / EN</span><span>SUGGEST</span><span>EJECT</span><span>…</span></div>
+      <p>The keypad works as on any deck: 0 to 9 and A to F, # to confirm and * to go back.</p>
+    </section>
+
+    <section>
+      <h2><span class="zh">兼容性</span><span class="en">Compatibility</span></h2>
+      <div class="tw"><table>
+        <tr><th>Software</th><th>On the ARCHON-7</th></tr>
+        <tr><td>Native XJ3 software</td><td>Runs directly with full colour and windows.</td></tr>
+        <tr><td>DS-4 cartridges</td><td>Run through the built-in DS-4 emulator, built on shared libraries. They look and behave exactly as on a DS-4.</td></tr>
+        <tr><td>Some heavy DS-4 software</td><td>May overload the emulator's host. The governor shuts the deck down, cools it and ejects the cartridge.</td></tr>
+      </table></div>
+      <div class="box"><p><b>Note.</b> Native ARCHON-7 software does not run on other decks.</p></div>
+    </section>
+
+    <section>
+      <h2><span class="zh">扩展槽</span><span class="en">Hardware bays</span></h2>
+      <p>Five bays, against the two on a typical consumer deck. Any standard module fits: indexer, auto-scan, survey, efficiency and co-processor modules all work, with any software. Modules can be moved between decks.</p>
+    </section>
+
+    <section>
+      <h2><span class="zh">散热</span><span class="en">Heat</span></h2>
+      <ul>
+        <li>The SYS window shows the deck's temperature. It turns red at <b>85 °C</b>.</li>
+        <li>At <b>100 °C</b> the thermal governor shuts the deck down, runs its cooling screen and ejects the cartridge.</li>
+        <li>The deck resumes at <b>50 °C</b>. Re-insert the cartridge to continue.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="zh">规格</span><span class="en">Specifications</span></h2>
+      <div class="tw"><table>
+        <tr><td>Model</td><td>Tianshu Systems ARCHON-7 (天枢 执政官-7), serial TS7-2219</td></tr>
+        <tr><td>Operating system</td><td>Xuanji OS 玄机, XJ3 firmware</td></tr>
+        <tr><td>Reader</td><td>DataView 数据视图, Chinese and English</td></tr>
+        <tr><td>Display</td><td>Multi-window colour screen, 7 programmable side keys</td></tr>
+        <tr><td>Expansion</td><td>5 hardware bays, 1 AUX port, DS-4 emulation</td></tr>
+        <tr><td>Thermal limits</td><td>Warning 85 °C, shutdown 100 °C, resume 50 °C</td></tr>
+      </table></div>
+    </section>
+  </main>
+  <footer>Tianshu Systems 天枢系统, Shenzhen. Export edition. Using this device to access data without authorization may be prohibited in your jurisdiction.</footer>
+</div>
+</body>
+</html>

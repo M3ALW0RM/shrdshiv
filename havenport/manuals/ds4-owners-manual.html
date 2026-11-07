@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DS-4 Owner's Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=Archivo:wght@400;600&family=VT323&display=swap">
+<style>
+/* Layout: a printed consumer-electronics booklet: putty paper, Kestrel slate headings, numbered sections, keypad diagram drawn in CSS. Committed single light look. */
+:root{
+  --desk:#3b3a36; --paper:#ece6d4; --paper-2:#e2dbc6; --ink:#24272b; --muted:#5d5e58; --slate:#37506a; --rule:#c4bba2; --warn:#a33a1f; --screen:#1d3a33; --screen-ink:#a6f5ea;
+  --f-head:"Archivo Narrow","Arial Narrow",sans-serif; --f-body:"Archivo","Helvetica Neue",Arial,sans-serif; --f-scr:"VT323","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--desk)}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.6 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.book{max-width:820px;margin:0 auto;background:var(--paper);box-shadow:0 24px 50px #0009;border-radius:2px}
+.cover{background:var(--slate);color:#f1ede1;padding:36px 40px 28px;display:grid;gap:6px}
+.cover .brand{font:700 15px var(--f-head);letter-spacing:.32em}
+.cover h1{margin:0;font:700 clamp(38px,8vw,64px)/1 var(--f-head);letter-spacing:.02em;text-wrap:balance}
+.cover p{margin:0;opacity:.85;max-width:52ch}
+.cover .model{font:400 26px var(--f-scr);color:var(--screen-ink);background:var(--screen);justify-self:start;padding:2px 12px;border-radius:3px;margin-top:8px}
+main{padding:28px 40px 36px;display:grid;gap:26px}
+@media (max-width:560px){.cover,main{padding-left:20px;padding-right:20px}}
+section{display:grid;gap:10px}
+h2{margin:0;font:700 22px var(--f-head);letter-spacing:.04em;color:var(--slate);display:flex;gap:10px;align-items:baseline;border-bottom:2px solid var(--slate);padding-bottom:4px}
+h2 span{font-size:14px;color:var(--muted)}
+h3{margin:4px 0 0;font:700 16px var(--f-head);letter-spacing:.06em;text-transform:uppercase}
+p{margin:0;max-width:66ch}
+ul,ol{margin:0;padding-left:22px;display:grid;gap:4px;max-width:64ch}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:640px){.two{grid-template-columns:minmax(0,1fr)}}
+.keypad{display:grid;grid-template-columns:repeat(4,46px);gap:6px;background:#cdc4aa;padding:12px;border-radius:10px;justify-self:start;box-shadow:inset 0 -3px 0 #a39a80}
+.keypad b{display:grid;place-items:center;height:40px;border-radius:6px;background:#3a3d40;color:#ece6d4;font:600 15px var(--f-body);box-shadow:0 3px 0 #1e2022}
+.keypad b.hex{background:#e9a440;color:#2a1a05;box-shadow:0 3px 0 #9c6a1e}
+.keypad b.w{grid-column:span 2}
+.screen{background:var(--screen);color:var(--screen-ink);font:20px/1.15 var(--f-scr);padding:12px 14px;border-radius:6px;white-space:pre;overflow-x:auto;box-shadow:inset 0 0 0 4px #0f201c;max-width:100%}
+.note{background:var(--paper-2);border-left:4px solid var(--slate);padding:10px 14px}
+.caution{background:#f3dccd;border-left:4px solid var(--warn);padding:10px 14px}
+.caution b,.note b{font-family:var(--f-head);letter-spacing:.08em;text-transform:uppercase}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font:700 12px var(--f-head);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tw{overflow-x:auto}
+footer{padding:18px 40px 30px;color:var(--muted);font-size:13px;border-top:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="book">
+  <header class="cover">
+    <span class="brand">KESTREL DATASYSTEMS</span>
+    <h1>DS-4 Owner's Manual</h1>
+    <p>Personal datadeck for reading licensed data shards at home, at work and on the go.</p>
+    <span class="model">DS-4 · KFW2 · ShardView 4.2</span>
+  </header>
+  <main>
+    <section>
+      <h2>1 <span>Welcome</span></h2>
+      <p>Thank you for choosing the Kestrel DS-4. Your deck reads data shards: small sealed memories that carry text documents and voice recordings. Most shards you will receive are encrypted. Only the shard's owner, holding its 6-digit key, can open them.</p>
+      <p>Kestrel. We remember.</p>
+    </section>
+
+    <section>
+      <h2>2 <span>Controls</span></h2>
+      <div class="two">
+        <div class="keypad" aria-label="DS-4 keypad">
+          <b>1</b><b>2</b><b>3</b><b class="hex">A</b><b>4</b><b>5</b><b>6</b><b class="hex">B</b><b>7</b><b>8</b><b>9</b><b class="hex">C</b><b class="hex">E</b><b>0</b><b class="hex">F</b><b class="hex">D</b><b class="w">* BACK</b><b class="w"># ENTER</b>
+        </div>
+        <ul>
+          <li><b>0 to 9 and A to F</b> enter numbers and menu choices.</li>
+          <li><b>#</b> confirms, turns pages forward and plays the next part of a recording.</li>
+          <li><b>*</b> goes back, deletes a typed character, or ejects from the main screen.</li>
+          <li><b>B</b> turns a page back.</li>
+          <li>If your deck is connected to a keyboard, Enter works as # and Backspace or Esc as *.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>3 <span>Reading a shard with ShardView</span></h2>
+      <ol>
+        <li>Insert the shard in the SHARD slot. The deck reads it in a moment.</li>
+        <li>ShardView shows what kind of shard it is and its status.</li>
+        <li>Press <b>1</b> to read a text document or play a voice recording. Press <b>2</b> to eject.</li>
+      </ol>
+      <div class="screen">KESTREL DATASYSTEMS
+ShardView 4.2
+ Shard 0042
+ Text document
+ Pages: 1
+ Integrity: verified
+
+ [1] Read  [2] Eject</div>
+      <h3>Shard status</h3>
+      <div class="tw"><table>
+        <tr><th>ShardView says</th><th>What it means</th></tr>
+        <tr><td>Integrity: verified</td><td>The shard is readable. Enjoy your content.</td></tr>
+        <tr><td>This shard is encrypted</td><td>Press 1 and enter the owner's 6-digit key. A wrong key is recorded.</td></tr>
+        <tr><td>INTEGRITY ERROR</td><td>The shard has been modified by unlicensed software. Kestrel recommends you return it to its owner.</td></tr>
+        <tr><td>Damaged: n lost</td><td>Some parts of the shard are unreadable static and cannot be recovered.</td></tr>
+      </table></div>
+    </section>
+
+    <section>
+      <h2>4 <span>The AUX port</span></h2>
+      <p>The AUX slot accepts licensed Kestrel modules. When a module is plugged in, the deck hands its screen and keypad to that module. Unplug it to return to ShardView.</p>
+      <div class="caution"><p><b>Caution.</b> Unlicensed cartridges sold in night markets may harm your deck, your data and your standing with your block warden. Kestrel accepts no responsibility for modified shards. Using such software to open a shard without its owner's key may be illegal where you live.</p></div>
+    </section>
+
+    <section>
+      <h2>5 <span>Expansion bays</span></h2>
+      <p>The DS-4 has <b>2 expansion bays</b> on its underside. Each bay holds one hardware module, and a module works with any software running on the deck. Remove a module to make room for another.</p>
+      <div class="tw"><table>
+        <tr><th>Module</th><th>Function</th></tr>
+        <tr><td>INDEXER</td><td>Labels the contents of each part of a shard.</td></tr>
+        <tr><td>AUTO-SCAN</td><td>Flags the most complex part of a shard.</td></tr>
+        <tr><td>SURVEY</td><td>Shows the complexity of every part of a shard.</td></tr>
+        <tr><td>EFFICIENCY</td><td>Lowers the power cost of diagnostic scans.</td></tr>
+        <tr><td>CO-PROC</td><td>Adds a co-processor for demanding applications.</td></tr>
+      </table></div>
+    </section>
+
+    <section>
+      <h2>6 <span>Temperature</span></h2>
+      <p>Two red digits beside the screen show the deck's temperature in °C. The DS-4 warms up when it works hard and cools down by itself when idle.</p>
+      <ul>
+        <li>At <b>70 °C</b> the OVERHEAT light comes on. It blinks as the deck nears its limit.</li>
+        <li>At <b>85 °C</b> the deck shuts itself off to protect its circuits. The keys stop working.</li>
+        <li>The blue bar above the digits fills as the deck cools. At <b>45 °C</b> it restarts on its own, with any module still in place.</li>
+      </ul>
+      <div class="note"><p><b>Tip.</b> Some third-party software runs the DS-4 much harder than it was designed for. If your deck keeps shutting down, give it time between tasks.</p></div>
+    </section>
+
+    <section>
+      <h2>7 <span>Specifications</span></h2>
+      <div class="tw"><table>
+        <tr><td>Model</td><td>Kestrel DataSystems DS-4, serial 44-0917</td></tr>
+        <tr><td>Firmware</td><td>KFW2 with ShardView 4.2</td></tr>
+        <tr><td>Display</td><td>22-column monochrome screen with status LEDs</td></tr>
+        <tr><td>Expansion</td><td>2 hardware bays, 1 AUX module port</td></tr>
+        <tr><td>Thermal limits</td><td>Warning 70 °C, shutdown 85 °C, restart 45 °C</td></tr>
+        <tr><td>Case</td><td>Impact-resistant putty polymer</td></tr>
+      </table></div>
+    </section>
+  </main>
+  <footer>Kestrel DataSystems, Havenport. This manual is property of Kestrel DataSystems. Unauthorized modification of your deck voids its warranty.</footer>
+</div>
+</body>
+</html>

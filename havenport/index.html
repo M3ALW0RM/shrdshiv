@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Havenport Shards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=VT323&display=swap">
+<link rel="stylesheet" href="css/engine.css">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<header class="top game-top">
+  <h1>Havenport Shards</h1>
+  <div class="top-r">
+    <span class="wallet-box"><span class="lbl">Nuyen</span><b id="wallet" class="mono">¥ 0</b></span>
+    <button type="button" class="btn accent" id="shopBtn" hidden>Mama Rook's counter</button>
+    <div class="theme-switch" id="themeSwitch" role="group" aria-label="Colour theme"><span>THEME</span><button type="button" class="btn" data-t="auto">Auto</button><button type="button" class="btn" data-t="light">Light</button><button type="button" class="btn" data-t="dark">Dark</button></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="deck-col">
+    <div id="deckMount"></div>
+    <p class="kbhint">Keyboard works too: <kbd>0</kbd>–<kbd>9</kbd> <kbd>A</kbd>–<kbd>F</kbd>, <kbd>Enter</kbd> for #, <kbd>Backspace</kbd> or <kbd>Esc</kbd> for *.</p>
+  </div>
+
+  <div class="side">
+    <section class="panel" aria-labelledby="hInbox">
+      <h2 id="hInbox">Messages <span class="badge" id="inboxBadge" hidden></span></h2>
+      <div id="inbox"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="hStash">
+      <h2 id="hStash">Your shards</h2>
+      <div class="tray" id="tray"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="hCarts">
+      <h2 id="hCarts">Cartridges</h2>
+      <div class="tray" id="crackerTray"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="hDeck">
+      <h2 id="hDeck">Deck</h2>
+      <div id="deckPanel"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="hShelf">
+      <h2 id="hShelf">Bookcase</h2>
+      <div id="shelf"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="hTr">
+      <h2 id="hTr">Playback transcript</h2>
+      <div class="transcript" id="transcript"><p class="empty-note">Nothing played yet. Play or read an open shard and it shows up here.</p></div>
+    </section>
+
+    <section class="panel" aria-labelledby="hSet">
+      <h2 id="hSet">Settings</h2>
+      <div class="settings">
+        <button type="button" class="btn" id="voiceTog" aria-pressed="true">Voice playback: on</button>
+        <button type="button" class="btn warn" id="newGame">New game</button>
+      </div>
+      <p class="empty-note">Your game saves itself in this browser.</p>
+    </section>
+  </div>
+</div>
+
+<div class="overlay" id="shop" hidden role="dialog" aria-modal="true" aria-label="Mama Rook's counter"></div>
+<div class="overlay" id="reader" hidden role="dialog" aria-modal="true" aria-label="Manual"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<!-- content: edit these to change the game -->
+<script src="data/shards.js"></script>
+<script src="data/story.js"></script>
+<script src="data/shop.js"></script>
+<!-- game rules, then the deck engine -->
+<script src="js/game.js"></script>
+<script src="js/engine.js"></script>
+<script>window.HR_GAME_START();</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Razorback Operator's Manual</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,500&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: a glossy black fold-out with hazard-striped edges, oversized condensed caps, red callouts and a crosshair motif. Committed single dark look. */
+:root{
+  --black:#0c0c0d; --panel:#161617; --panel-2:#1f1f21; --line:#333336;
+  --white:#f1ede6; --grey:#a7a39c; --red:#e0301e; --red-dark:#7a160d; --yellow:#f2c230;
+  --f-display:"Anton", "Impact", "Arial Narrow", sans-serif;
+  --f-body:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-mono:"Share Tech Mono", "Courier New", monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--black)}
+body{margin:0;background:var(--black);color:var(--white);font-family:var(--f-body);font-weight:500;font-size:19px;line-height:1.45;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:32px 64px}
+.fold{max-width:900px;margin:0 auto;background:linear-gradient(160deg,#1b1b1d,#0f0f10 60%);position:relative;
+  border:14px solid transparent;border-image:repeating-linear-gradient(-45deg,var(--red) 0 16px,#111 16px 32px) 14;
+  box-shadow:0 30px 70px #000}
+.gloss{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,#ffffff0d 0 18%,transparent 34%)}
+.inner{padding:40px 48px 52px;position:relative}
+@media (max-width:640px){.inner{padding:28px 18px 36px}}
+.legal{font-size:13px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;margin:0 0 22px;max-width:70ch}
+.logo{font-family:var(--f-mono);color:var(--red);font-size:clamp(12px,2.6vw,17px);line-height:1.15;margin:0 0 8px;white-space:pre;overflow-x:auto}
+h1{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(46px,10vw,96px);line-height:.92;margin:0;letter-spacing:.01em}
+h1 em{font-style:normal;color:var(--red)}
+.tag{font-family:var(--f-display);font-size:clamp(18px,3.4vw,26px);color:var(--grey);text-transform:uppercase;letter-spacing:.06em;margin:6px 0 28px}
+.congrats{font-family:var(--f-display);font-size:30px;text-transform:uppercase;color:var(--yellow);margin:0 0 8px;letter-spacing:.02em}
+p{margin:0 0 14px;max-width:62ch}
+b, strong{color:var(--white);font-weight:700}
+.big{font-size:22px}
+.big strong{color:var(--red)}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:22px 0 10px}
+.quote{background:var(--panel-2);border-left:5px solid var(--red);padding:14px 18px;min-width:0}
+.quote q{display:block;font-family:var(--f-display);text-transform:uppercase;font-size:22px;line-height:1.1;quotes:"“" "”"}
+.quote span{display:block;font-style:italic;color:var(--grey);font-size:16px;margin-top:8px}
+h2{display:flex;align-items:center;gap:14px;font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:34px;letter-spacing:.02em;margin:40px 0 12px;line-height:1}
+h2 .n{display:inline-grid;place-items:center;min-width:44px;height:44px;background:var(--red);color:var(--black);font-size:26px}
+.tw{overflow-x:auto;margin:8px 0 16px}
+table{border-collapse:collapse;width:100%;font-size:18px}
+th{font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.06em;text-align:left;color:var(--grey);border-bottom:2px solid var(--red);padding:4px 14px 6px 0}
+td{padding:6px 14px 6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-family:var(--f-mono);color:var(--yellow);white-space:nowrap}
+td.n{text-align:right;font-family:var(--f-display);font-size:22px;color:var(--red);font-variant-numeric:tabular-nums}
+.marks td:first-child{font-size:26px;width:60px}
+.screen{font-family:var(--f-mono);font-size:16px;line-height:1.25;background:#060807;color:#ff8a78;padding:16px 18px;border:2px solid var(--red-dark);
+  white-space:pre;overflow-x:auto;margin:8px 0 18px;box-shadow:inset 0 0 24px #e0301e22}
+.spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px;align-items:start}
+@media (max-width:720px){.spread{grid-template-columns:minmax(0,1fr)}}
+.crosshair{position:relative;width:120px;height:120px;margin:4px 0 16px;border:3px solid var(--red);border-radius:50%}
+.crosshair::before,.crosshair::after{content:"";position:absolute;background:var(--red)}
+.crosshair::before{left:50%;top:-16px;bottom:-16px;width:3px;transform:translateX(-50%)}
+.crosshair::after{top:50%;left:-16px;right:-16px;height:3px;transform:translateY(-50%)}
+ol{margin:0 0 14px;padding-left:26px}
+ol li{margin:6px 0}
+ol li::marker{font-family:var(--f-display);color:var(--red);font-size:22px}
+kbd{font-family:var(--f-mono);font-size:16px;background:var(--panel-2);border:1px solid var(--grey);padding:0 6px}
+.bang{font-family:var(--f-display);font-size:clamp(30px,6vw,46px);text-transform:uppercase;color:var(--yellow);letter-spacing:.04em;margin:8px 0 14px}
+.bang span{color:var(--red)}
+.warning{border:3px solid var(--yellow);background:repeating-linear-gradient(-45deg,#f2c23014 0 14px,transparent 14px 28px);padding:18px 22px;margin:16px 0}
+.warning h3{font-family:var(--f-display);font-weight:400;font-size:26px;color:var(--yellow);margin:0 0 8px;text-transform:uppercase}
+.warning ul{margin:0;padding-left:22px}
+.warning li{margin:6px 0}
+.warning li::marker{content:"▲  ";color:var(--yellow)}
+.notexist{font-family:var(--f-display);text-transform:uppercase;color:var(--red);font-size:22px;margin-top:22px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:34px;font-size:13px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+</style>
+</head>
+<body>
+<div class="fold">
+  <div class="gloss" aria-hidden="true"></div>
+  <div class="inner">
+    <p class="legal">© CrackWorks Ltd. Not for sale in any jurisdiction. Distribution of this product is a criminal offence in 41 territories and an act of war in two.</p>
+<pre class="logo" aria-hidden="true"> ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  RAZORBACK PRO 5
+  CRACKWORKS LTD
+ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</pre>
+    <h1>Razorback <em>Pro 5</em></h1>
+    <p class="tag">Operator's Manual · Read it once. Then start shooting.</p>
+
+    <p class="congrats">Congratulations, operator.</p>
+    <p>You now own the most aggressive shard-breaching platform money can buy, provided the money was in cash and nobody asked where it came from. RAZORBACK was not designed by philosophers or revolutionaries. It was designed by professionals, for professionals, to do one job:</p>
+    <p class="big"><strong>Put locks on the floor. Fast. In volume.</strong></p>
+
+    <div class="quotes">
+      <div class="quote"><q>I cleared six targets before the guard finished his coffee.</q><span>Satisfied customer, name withheld on legal advice</span></div>
+      <div class="quote"><q>Loud. Effective. Worth every yen.</q><span>Satisfied customer, currently unreachable</span></div>
+    </div>
+
+    <h2><span class="n">1</span>Battlefield terminology</h2>
+    <p>RAZORBACK speaks plainly, and in capitals, so you can read it in the dark, in the rain, or while running.</p>
+    <div class="tw"><table>
+      <tr><th>On screen</th><th>Meaning</th></tr>
+      <tr><td>TGT</td><td>A target: one sector of the shard</td></tr>
+      <tr><td>AMMO</td><td>Attempts left on the shard</td></tr>
+      <tr><td>LIVE</td><td>Target still locked</td></tr>
+      <tr><td>DEAD</td><td>Target cracked</td></tr>
+      <tr><td>SLAG</td><td>Target burned beyond recovery</td></tr>
+      <tr><td>SMASH / RECON / LOADOUT</td><td>Crack / scan / warez</td></tr>
+      <tr><td>DUDS</td><td>Symbols your shots have proven aren't there</td></tr>
+      <tr><td>ICE</td><td>The shard's cipher</td></tr>
+    </table></div>
+
+    <h2><span class="n">2</span>Tactical display</h2>
+<pre class="screen">▓ RAZORBACK ▓ 3306
+ICE COMB (STRIDE)
+AMMO 22 ■■■■■■■■■■
+&lt;1&gt; LIVE   D3 ?????
+&lt;2&gt; DEAD   1 IN 4
+1SMASH 2RECON 3LOAD
+4READ *EJECT</pre>
+    <p>Every target's difficulty is surveyed automatically, at no charge to the operator. CrackWorks believes in knowing what you're shooting at.</p>
+
+    <h2><span class="n">3</span>Reading your shots</h2>
+    <div class="tw"><table class="marks">
+      <tr><th>Mark</th><th>Meaning</th></tr>
+      <tr><td>X</td><td><b>HIT.</b> Right symbol, right place</td></tr>
+      <tr><td>O</td><td><b>GRAZE.</b> Right symbol, wrong place</td></tr>
+      <tr><td>-</td><td><b>MISS.</b> Not in the code</td></tr>
+    </table></div>
+    <p>On hardened targets, RAZORBACK reports totals rather than positions: <b>1X1O</b> means one hit and one graze somewhere in your shot. Track your DUDS. They tell you where not to aim.</p>
+
+    <h2><span class="n">4</span>Spread Shot™</h2>
+    <div class="spread">
+      <div>
+        <div class="crosshair" aria-hidden="true"></div>
+        <p>The competition breaks one lock at a time. That's their problem.</p>
+        <ol>
+          <li>Press <kbd>1</kbd> SMASH.</li>
+          <li>Press target numbers to load up to <b>three targets</b>. Loaded targets show <b>&gt;</b>. All targets in one load must share the same difficulty.</li>
+          <li>Press <kbd>#</kbd> to fire.</li>
+        </ol>
+      </div>
+      <div>
+        <p>Every shot strikes <b>every live target at once</b> and costs <b>1 AMMO, flat</b>. One shell, up to three kills. Each target reports in its own column:</p>
+<pre class="screen">SPREAD 1+2 LEN4 [0-9]
+AMMO 16 ■■■■■■■---
+     T1   T2
+0123 1X1O 3O
+4567 1O   -
+2561 1O   HIT</pre>
+      </div>
+    </div>
+    <p>When a target goes down, RAZORBACK confirms the kill with its signature:</p>
+    <p class="bang">Rack. Rack. <span>BANG.</span></p>
+    <p>Downed targets drop out of the spread. Load three, pay for one: that's the RAZORBACK difference. The catch is that one code has to work for all of them, so each lock takes a few more shots than it would alone. Load a single target for precision work.</p>
+
+    <h2><span class="n">5</span>Recon</h2>
+    <p>All costs include RAZORBACK's built-in efficiency rebate of 1 AMMO per scan.</p>
+    <div class="tw"><table>
+      <tr><th>Recon</th><th style="text-align:right">AMMO</th></tr>
+      <tr><td>Length of TGT</td><td class="n">1</td></tr>
+      <tr><td>Contents of TGT</td><td class="n">1</td></tr>
+      <tr><td>Hardest TGT</td><td class="n">2</td></tr>
+      <tr><td>Symbols in TGT</td><td class="n">3</td></tr>
+      <tr><td>Tag all targets</td><td class="n">1</td></tr>
+    </table></div>
+
+    <h2><span class="n">6</span>Assist</h2>
+    <p>On single-target work, press <kbd>#</kbd> three times with nothing typed. RAZORBACK fills in <b>half of a strong shot</b> (<b>5_8_</b>), you finish the rest. Cost: 1 AMMO.</p>
+    <p>ASSIST needs a clear picture before it'll commit. Watch the meter:</p>
+<pre class="screen"> PROBE: CHARGING ■■■■--</pre>
+    <p>It fills as your shots narrow down the possibilities and unlocks when full. Shoot first, get assisted later.</p>
+
+    <div class="warning">
+      <h3>▲ Safety and liability</h3>
+      <ul>
+        <li>RAZORBACK leaves residue on every target it touches. Do not use it on shards you need to return looking untouched.</li>
+        <li>Out of ammo, every live target is slagged. There is no reload. Count your shots.</li>
+        <li>CrackWorks Ltd accepts no responsibility for slagged targets, lost data, voided warranties, corporate retaliation, or hearing damage.</li>
+      </ul>
+    </div>
+    <p class="notexist">This manual does not exist.</p>
+
+    <div class="foot"><span>CW-RB5-OM rev 5.2</span><span>Shoot first.</span></div>
+  </div>
+</div>
+</body>
+</html>

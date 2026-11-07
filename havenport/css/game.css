@@ -1,0 +1,96 @@
+/* Havenport Shards: the game's own panels (messages, deck bays, bookcase, Rook's counter).
+   Colours come from the tokens in css/engine.css, so both themes work. */
+:root{ --shelf-wood:#5a3b25; --shelf-edge:#3c2616; --paper-ink:#1f201c; }
+.lbl{font-family:var(--f-display);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-screen);font-size:1.15em}
+.game-top{align-items:center}
+.top-r{margin-left:auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.top-r .theme-switch{margin-left:0}
+.wallet-box{display:flex;gap:8px;align-items:baseline}
+.wallet-box b{font-size:26px;color:var(--accent);font-weight:400}
+.btn.accent{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.btn.small{padding:4px 9px;font-size:12px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.badge{display:inline-block;margin-left:8px;background:var(--accent);color:var(--on-accent);border-radius:9px;padding:1px 8px;font-size:10px;letter-spacing:.08em}
+.badge[hidden]{display:none}
+.empty-note{color:var(--muted);font-size:14px;margin:0}
+
+/* messages */
+.inbox{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:16px}
+@media (max-width:640px){.inbox{grid-template-columns:minmax(0,1fr)}}
+.msg-list{list-style:none;margin:0;padding:0;display:grid;gap:4px;max-height:420px;overflow:auto;align-content:start}
+.msg-row{appearance:none;width:100%;text-align:left;display:grid;gap:1px;background:transparent;border:1px solid transparent;border-left:3px solid var(--who);border-radius:4px;padding:6px 8px;color:var(--ink);cursor:pointer;font:inherit}
+.msg-row b{font-size:12px;color:var(--muted);font-weight:600}
+.msg-row span{font-size:13.5px;line-height:1.3}
+.msg-row.on{background:var(--bench-3);border-color:var(--line);border-left-color:var(--who)}
+.msg-row.unread span{font-weight:600}
+.msg-row.unread b::after{content:" ●";color:var(--accent)}
+.msg-row:focus-visible{outline:2px solid var(--accent)}
+.msg-body{min-width:0;display:grid;gap:8px;align-content:start}
+.msg-body header{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;border-left:3px solid var(--who);padding-left:8px}
+.msg-body header b{font-family:var(--f-display);letter-spacing:.06em}
+.msg-body header span{color:var(--muted);font-size:13px}
+.msg-body h3{margin:0;font-family:var(--f-display);font-size:18px;letter-spacing:.03em}
+.msg-body p{margin:0;max-width:62ch}
+.attach{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+.hint{font-size:13.5px;background:var(--bench-3);border:1px dashed var(--line);border-radius:6px;padding:8px 10px;color:var(--ink-2)}
+.hint::before{content:"HOW TO · ";font-family:var(--f-display);font-size:11px;letter-spacing:.12em;color:var(--accent)}
+.hint.end::before{content:"THE END · "}
+
+/* deck panel */
+.deckrow{display:grid;gap:8px}
+.seg-btns{display:flex;flex-wrap:wrap;gap:6px}
+.deck-blurb{margin:0;color:var(--muted);font-size:14px}
+.bays-row{display:grid;gap:6px;margin-top:12px}
+.bayline{display:flex;flex-wrap:wrap;gap:6px}
+.bayslot{appearance:none;font:600 11px var(--f-display);letter-spacing:.1em;padding:8px 10px;border:1px dashed var(--line);border-radius:4px;color:var(--muted);background:transparent;min-width:92px;text-align:center}
+.bayslot.full{border-style:solid;border-color:var(--accent);color:var(--accent);cursor:pointer}
+.bayslot.full:hover::after{content:" ×"}
+.warez{margin:0;font-size:14px}
+.settings{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+
+/* bookcase */
+.bookcase{position:relative;display:flex;flex-wrap:wrap;gap:4px;align-items:flex-end;padding:10px 10px 18px;min-height:150px;background:linear-gradient(var(--bench-3), var(--bench-2));border-radius:6px;border:1px solid var(--line)}
+.shelf-board{position:absolute;left:0;right:0;bottom:0;height:14px;background:var(--shelf-wood);border-top:3px solid var(--shelf-edge);border-radius:0 0 6px 6px}
+.book{appearance:none;position:relative;z-index:1;border:0;cursor:pointer;width:38px;height:132px;background:var(--sp);color:var(--si);border-radius:3px 3px 1px 1px;box-shadow:inset -4px 0 0 #0003, inset 3px 0 0 #fff2, 0 2px 3px #0006;padding:8px 0;display:flex;justify-content:center;transition:transform .15s}
+.book:nth-child(3n){height:120px} .book:nth-child(4n){width:44px} .book:nth-child(5n){height:140px}
+.book span{writing-mode:vertical-rl;transform:rotate(180deg);font:600 11px var(--f-display);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:100%}
+.book:hover,.book:focus-visible{transform:translateY(-8px)}
+.book:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* overlays: Rook's counter and the manual reader */
+.overlay{position:fixed;inset:0;z-index:50;background:var(--bench);overflow:auto;
+  padding-top:max(20px, env(safe-area-inset-top, 0px));padding-bottom:max(20px, env(safe-area-inset-bottom, 0px));
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.overlay[hidden]{display:none}
+.shop-in{max-width:1100px;margin:0 auto;display:grid;gap:16px}
+.shop-h{display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--accent);padding-bottom:12px}
+.shop-title{font-size:30px;letter-spacing:.06em;color:var(--ink);margin:0;text-transform:none}
+.shop-r{display:flex;gap:16px;align-items:flex-end}
+.shop-r > div{display:grid}
+.shop-cash{font-family:var(--f-screen);font-size:30px;font-weight:400;color:var(--accent);line-height:1}
+.goods{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.good{background:var(--bench-2);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:8px;grid-template-rows:auto 1fr auto auto auto;min-width:0}
+.good header{display:grid;gap:2px}
+.good header b{font-family:var(--f-display);font-size:17px;letter-spacing:.04em}
+.good header span{color:var(--muted);font-size:13px}
+.good p{margin:0;font-size:14px}
+.good .needs{color:var(--bad);font-size:13px}
+.good .comes{color:var(--muted);font-size:12.5px;font-style:italic}
+.good footer{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px}
+.price{font-family:var(--f-screen);font-size:22px;color:var(--accent)}
+.owned-tag{font:600 11px var(--f-display);letter-spacing:.12em;color:var(--good);text-transform:uppercase}
+.good.owned{opacity:.75}
+.reader-in{max-width:1000px;height:100%;margin:0 auto;display:grid;grid-template-rows:auto 1fr;gap:10px}
+.reader-h{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
+.reader-h b{font-family:var(--f-display);letter-spacing:.06em}
+.reader-h a.btn{text-decoration:none;display:inline-block}
+.reader-in iframe{width:100%;height:100%;min-height:70vh;border:1px solid var(--line);border-radius:6px;background:#fff}
+
+/* toasts */
+.toasts{position:fixed;z-index:60;right:max(16px, env(safe-area-inset-right, 0px));bottom:max(16px, env(safe-area-inset-bottom, 0px));display:grid;gap:6px;max-width:min(360px, calc(100vw - 32px))}
+.toast{background:var(--bench-3);color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:6px;padding:8px 12px;font-size:14px;box-shadow:0 6px 18px #0006;transition:opacity .4s, transform .4s}
+.toast.pay{border-left-color:var(--good)} .toast.warn{border-left-color:var(--bad)} .toast.msg,.toast.buy{border-left-color:var(--accent)}
+.toast.out{opacity:0;transform:translateY(6px)}
+@media (prefers-reduced-motion:reduce){.book,.toast{transition:none}}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RAZORBACK KX Addendum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;800&display=swap">
+<style>
+/* Layout: a loud black-and-red addendum card in the RAZORBACK house style: hazard stripes, chunky condensed type, three target windows drawn in CSS. Committed single dark look. */
+:root{
+  --desk:#0b0b0c; --card:#151517; --ink:#f2f0ea; --muted:#a9a59b; --red:#e2231a; --yellow:#ffd21f; --line:#2c2c30; --win:#0f1218; --winline:#2a303b; --green:#4fe08a;
+  --f-big:"Anton","Impact",sans-serif; --f-head:"Barlow Condensed","Arial Narrow",sans-serif; --f-body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--desk)}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.6 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.card{max-width:820px;margin:0 auto;background:var(--card);border:1px solid var(--line);box-shadow:0 20px 50px #000}
+.stripe{height:16px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,#111 14px 28px)}
+.cover{padding:30px 36px 22px;display:grid;gap:4px}
+.cover small{font:800 13px var(--f-head);letter-spacing:.3em;color:var(--red)}
+.cover h1{margin:0;font:400 clamp(44px,10vw,84px)/.95 var(--f-big);letter-spacing:.02em;text-transform:uppercase}
+.cover h1 em{font-style:normal;color:var(--red)}
+.cover p{margin:8px 0 0;color:var(--muted);max-width:56ch}
+main{padding:10px 36px 34px;display:grid;gap:26px}
+@media (max-width:560px){.cover,main{padding-left:18px;padding-right:18px}}
+section{display:grid;gap:10px}
+h2{margin:0;font:800 24px var(--f-head);letter-spacing:.06em;text-transform:uppercase;color:var(--yellow);border-bottom:2px solid var(--red);padding-bottom:4px}
+p{margin:0;max-width:66ch}
+ul{margin:0;padding-left:20px;display:grid;gap:5px;max-width:64ch}
+li::marker{color:var(--red)}
+.wins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:560px){.wins{grid-template-columns:minmax(0,1fr)}}
+.w{background:var(--win);border:1px solid var(--winline);border-radius:4px;font:600 14px/1.5 var(--f-head);letter-spacing:.05em}
+.w b{display:block;background:var(--red);color:#fff;padding:2px 8px;font-weight:800}
+.w div{padding:6px 8px;color:#dfe5ee}
+.w .ok{color:var(--green)}
+.kill{background:#2a0b0a;border-left:4px solid var(--red);padding:10px 14px}
+.kill b{font-family:var(--f-head);letter-spacing:.12em;color:var(--red);text-transform:uppercase}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+th{font:800 12px var(--f-head);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tw{overflow-x:auto}
+footer{padding:14px 36px 26px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="stripe" aria-hidden="true"></div>
+  <header class="cover">
+    <small>CRACKWORKS LTD · ADDENDUM</small>
+    <h1>Razorback <em>KX</em></h1>
+    <p>Everything in your RAZORBACK PRO 5 manual still applies. This card covers what's different on the Tianshu ARCHON-7.</p>
+  </header>
+  <main>
+    <section>
+      <h2>What KX means</h2>
+      <ul>
+        <li>Built natively for Xuanji OS. No emulator, full colour, red all the way down.</li>
+        <li><b>ARCHON-7 only.</b> A DS-4 will refuse it. If you still run a DS-4, keep your PRO 5.</li>
+        <li>A new boot sound. Turn it up.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Spread shot, now in windows</h2>
+      <p>Load up to 3 locked sectors of the same difficulty, same as always. Every shot hits all of them for a flat 1 ammo. On the KX each target gets its own window, so you read every lock's feedback side by side.</p>
+      <div class="wins" aria-label="Three target windows">
+        <div class="w"><b>TARGET 1 · SEC 2</b><div>4710 X O<br>4791 X X O</div></div>
+        <div class="w"><b>TARGET 2 · SEC 3</b><div>4710 O<br>4791 X</div></div>
+        <div class="w"><b>TARGET 3 · SEC 5</b><div>4710 X X<br><span class="ok">4791 CLEARED</span></div></div>
+      </div>
+      <p>Cleared targets drop out with a rack. The rest keep their windows.</p>
+    </section>
+
+    <section>
+      <h2>Same gun, same rules</h2>
+      <div class="tw"><table>
+        <tr><th>Feature</th><th>PRO 5 and KX</th></tr>
+        <tr><td>Marks</td><td>X right symbol right place, O right symbol wrong place</td></tr>
+        <tr><td>Elimination log</td><td>Yes: ruled-out symbols are struck out</td></tr>
+        <tr><td>Cheap scans</td><td>Yes, stacks with an EFFICIENCY module</td></tr>
+        <tr><td>Full map</td><td>Automatic</td></tr>
+        <tr><td>Content tags</td><td>2 juice</td></tr>
+        <tr><td>Probe</td><td>Level 2: fills half the code for 1 juice once 500 or fewer codes remain</td></tr>
+      </table></div>
+    </section>
+
+    <div class="kill"><p><b>CrackWorks reminds you</b> that this product is sold for security research. CrackWorks Ltd is not responsible for what you shoot at.</p></div>
+  </main>
+  <footer>CrackWorks Ltd. RAZORBACK and KX are trademarks of nobody you'd want to meet.</footer>
+  <div class="stripe" aria-hidden="true"></div>
+</div>
+</body>
+</html>
