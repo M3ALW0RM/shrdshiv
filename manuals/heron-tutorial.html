@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Heron's Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=VT323&display=swap">
+<style>
+/* Layout: a dot-matrix printout on green-bar tractor-feed paper, torn off a continuous roll: perforated edges with feed holes, Heron's notes in mono, little screen captures in VT323. Committed single light look. */
+:root{
+  --desk:#2d3330; --paper:#fbfaf3; --bar:#e2efdc; --ink:#24282a; --soft:#5d6460; --hole:#2d3330; --perf:#c9cfc6; --red:#a8322a; --scr:#06100a; --scr-ink:#8dffa8; --scr-dim:#3c7a4d;
+  --f-mono:"IBM Plex Mono",ui-monospace,"Courier New",monospace; --f-scr:"VT323","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--desk)}
+body{margin:0;background:var(--desk);color:var(--ink);font:15.5px/1.7 var(--f-mono);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:30px 56px}
+.roll{position:relative;max-width:860px;margin:0 auto;padding:0 44px;background:
+  radial-gradient(circle at 22px 17px, var(--hole) 0 6px, transparent 6.5px) 0 0/100% 34px repeat-y,
+  radial-gradient(circle at calc(100% - 22px) 17px, var(--hole) 0 6px, transparent 6.5px) 0 0/100% 34px repeat-y,
+  var(--paper);box-shadow:0 20px 50px #000a}
+.roll::before,.roll::after{content:"";position:absolute;top:0;bottom:0;width:0;border-left:2px dashed var(--perf)}
+.roll::before{left:40px}.roll::after{right:40px}
+.sheet{background:repeating-linear-gradient(var(--paper) 0 54px, var(--bar) 54px 108px);padding:36px 34px 40px}
+@media (max-width:620px){.roll{padding:0 30px;background:
+  radial-gradient(circle at 14px 17px, var(--hole) 0 4.5px, transparent 5px) 0 0/100% 34px repeat-y,
+  radial-gradient(circle at calc(100% - 14px) 17px, var(--hole) 0 4.5px, transparent 5px) 0 0/100% 34px repeat-y, var(--paper)}
+  .roll::before{left:27px}.roll::after{right:27px}.sheet{padding:28px 14px 30px}}
+.hdr{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;font-size:12.5px;color:var(--soft);border-bottom:1px solid var(--ink);padding-bottom:6px;letter-spacing:.04em}
+h1{margin:22px 0 2px;font:600 clamp(26px,5.5vw,38px)/1.1 var(--f-mono);letter-spacing:-.01em}
+.lede{margin:0 0 6px;color:var(--soft);font-style:italic}
+h2{margin:30px 0 8px;font:600 17px var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+h2::before{content:"## ";color:var(--soft)}
+p{margin:0 0 12px;max-width:66ch}
+ol,ul{margin:0 0 12px;padding-left:24px;max-width:64ch;display:grid;gap:5px}
+b{font-weight:600}
+kbd{font:400 14px var(--f-mono);border:1px solid var(--ink);border-bottom-width:2px;border-radius:3px;padding:0 5px;background:#fff}
+.scr{font:20px/1.1 var(--f-scr);background:var(--scr);color:var(--scr-ink);padding:10px 14px;white-space:pre;overflow-x:auto;margin:6px 0 14px;border-radius:6px;box-shadow:inset 0 0 18px #000}
+.scr .d{color:var(--scr-dim)}
+.tw{overflow-x:auto;margin:4px 0 14px}
+table{border-collapse:collapse;font-size:14.5px;min-width:100%}
+th,td{text-align:left;padding:4px 14px 4px 0;border-bottom:1px solid #00000022;vertical-align:top}
+th{font-weight:600;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.pen{color:var(--red);font-style:italic}
+.rules{border:2px solid var(--ink);padding:12px 16px;margin:20px 0 6px;background:#fffffb}
+.rules h2{margin-top:0}
+.sig{text-align:right;font-style:italic;margin-top:18px}
+</style>
+</head>
+<body>
+<div class="roll">
+  <div class="sheet">
+    <div class="hdr"><span>PRN0 · HERON@ROOST · PAGE 1 OF 1</span><span>TO: the kid with the DS-4</span></div>
+    <h1>Running shards, for beginners</h1>
+    <p class="lede">Notes from Heron. Printed because you'll lose a message but you won't lose paper.</p>
+
+    <h2>What you've got</h2>
+    <ul>
+      <li><b>Your deck</b>, the DS-4. A shard goes in the SHARD slot, a cracker cartridge goes in the AUX port.</li>
+      <li><b>Your shards</b>, the little data sticks in your stash. Most of them are locked. Locked shards are what you get paid to open.</li>
+      <li><b>Your cartridges.</b> You start with SHRDSHIV. Its README is on your bookcase.</li>
+    </ul>
+    <p>Click a shard in your stash to put it in the deck. Click a cartridge to plug it in or pull it out. You can type on the deck's keys or use your keyboard: <kbd>Enter</kbd> is <kbd>#</kbd>, <kbd>Esc</kbd> or <kbd>Backspace</kbd> is <kbd>*</kbd>.</p>
+
+    <h2>Reading a shard</h2>
+    <p>With no cartridge plugged in, the deck runs Kestrel's own reader, ShardView. If a shard isn't locked, ShardView reads it for you.</p>
+    <div class="scr"> Shard 0042
+ Text document
+ Integrity: verified
+
+<span class="d"> 1-read  2-eject</span></div>
+    <p>Every screen ends with its keys like that: the key, a dash, what it does. <kbd>1</kbd> reads, <kbd>2</kbd> ejects.</p>
+
+    <h2>Cracking a shard</h2>
+    <p>Plug in SHRDSHIV, then insert a locked shard. You get the map:</p>
+    <div class="scr">SHRDSHIV :: 0588
+enc SEGLOCK (blocks)
+juice 12 ██████████
+[1] lock   d? ?????
+[2] lock   d? ?????
+[3] lock   d? ?????
+
+<span class="d">1-crack 2-snif 3-warez
+4-read  *-eject</span></div>
+    <ol>
+      <li>Each line is a <b>sector</b>, one lock on the shard. d is how hard the lock is, from d1 to d6.</li>
+      <li>Press <kbd>1</kbd> to crack, then the sector's number.</li>
+      <li>Type a guess at the code and press <kbd>#</kbd>. The deck tells you how close you were.</li>
+      <li>Keep guessing until it opens. Then press <kbd>4</kbd> to read what you freed.</li>
+    </ol>
+    <div class="tw"><table>
+      <tr><th>SHRDSHIV shows</th><th>It means</th></tr>
+      <tr><td>●</td><td>right symbol, right place</td></tr>
+      <tr><td>○</td><td>right symbol, wrong place</td></tr>
+      <tr><td>·</td><td>not in the code</td></tr>
+    </table></div>
+    <p>On d3 and harder, the lock only tells you <b>how many</b> are right, not which ones. That's when better crackers earn their price.</p>
+
+    <h2>Juice</h2>
+    <p>Every guess costs 1 juice. Every shard has a fixed amount, shared by all its sectors. When the juice runs out, every sector still locked burns to static and is gone. That's called frying a shard.</p>
+    <p><kbd>2</kbd> sniffs a lock: you spend juice to learn things about it, like how long the code is or how many symbols it uses. <kbd>3</kbd> opens your warez, one-shot programs you buy from Rook. Sniffing is worth it on hard locks. On a d1, just guess.</p>
+
+    <h2>Getting paid</h2>
+    <ul>
+      <li>Rook pays when a shard is <b>done</b>: nothing left locked. Harder sectors pay more.</li>
+      <li>Open every sector without frying any and she adds a clean-job bonus.</li>
+      <li>If you fry a shard, she only pays for sectors you opened that can still be read on their own. Some ciphers, like CHAFF and COMB, scatter the text across every sector. Half of one of those is worth nothing.</li>
+      <li>If a shard is going bad, <b>hand it back</b> before you fry it. The job bar under your deck shows what she'll pay. The more you've opened and the more juice is left, the more she pays, because her next runner can still finish it.</li>
+    </ul>
+    <p class="pen">Hand it back early, not with 1 juice left. A shard with nothing left in it is worth nothing to anyone.</p>
+
+    <h2>Heat</h2>
+    <p>The DS-4 runs hot when it works hard. Watch the TEMP readout under the screen. At 70 °C the overheat light comes on. At 85 °C it shuts itself off until it cools. Cheap software runs cool. Fancy software doesn't.</p>
+
+    <h2>Rook's counter</h2>
+    <p>Once you've done a job for her, her counter opens: top right, the button with the cart. She sells crackers, gear for your deck and warez, and she gets new stock as you prove yourself. Everything you buy comes with its manual. Read them.</p>
+    <p>She also hands out side jobs if you ask. Small stuff, good practice, honest money.</p>
+
+    <div class="rules">
+      <h2>Heron's rules</h2>
+      <ol>
+        <li>Read the map before you touch a lock.</li>
+        <li>Crack the easy sectors first. They pay the same whether you're scared or not.</li>
+        <li>Never spend your last juice on a guess you can't afford to lose.</li>
+        <li>Don't trust anyone who calls you choom.</li>
+        <li>Pay Rook what you owe her. Always.</li>
+      </ol>
+    </div>
+    <p class="sig">Good luck, kid. Don't call me unless it's bad. Heron.</p>
+  </div>
+</div>
+</body>
+</html>

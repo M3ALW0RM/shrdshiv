@@ -9,6 +9,11 @@
 //   give    shard ids added to the player's stash.
 //   msgs    messages that arrive. from / subject / body (paragraphs as a list).
 //           hint is an optional gameplay tip shown under the message.
+//           shards: optional list of shard ids shown as attachments on this message.
+//             (Without it, the step's first message shows the step's "give" list.)
+//           docs: optional list of manual ids (data/shop.js) attached to the message.
+//             The player can open them from the message, and they sit on the bookcase.
+//           wait: true holds the message back until every earlier message has been read.
 //   end     true on the last step: the game shows its ending.
 //
 // In bodies, {opened} {total} {burned} and {earned} are filled in with the player's results.
@@ -16,6 +21,7 @@
 window.HR_STORY = {
   title: "Havenport Shards",
   contacts: {
+    heron: {name:"Heron", role:"retired netrunner", color:"#9fc7b8"},
     rook: {name:"Mama Rook", role:"fixer, Eighth Street", color:"#c7a35a"},
     nightjar: {name:"Nightjar", role:"cracker author", color:"#d08c4a"},
     lin: {name:"Lin Yuhan", role:"ex-Tianshu engineer", color:"#d24a3a"},
@@ -26,11 +32,17 @@ window.HR_STORY = {
   steps: [
     // ===== stage 0: the start =====
     {after:[], give:["0042", "0588"], msgs:[
-      {from:"rook", subject:"Welcome to the Stacks",
-        body:["So you're the new kid with the DS-4. Good. Cheap decks don't get looked at twice.",
-          "A courier dropped a bag of shards at my counter last night and never came back for it. Shards are information, and information is money. I'll pay for every sector you open.",
-          "Start easy. The curfew notice isn't even locked: stick it in your deck with no cracker plugged in and read it. Then plug in that SHRDSHIV cart Nightjar left you and crack the night market flyer."],
-        hint:"Click a shard in your stash to insert it, and click a cartridge to plug it in. The deck works with your keyboard too. SHRDSHIV's README is on your bookcase."}
+      {from:"heron", subject:"So you want to run shards", docs:["heron-tutorial"],
+        body:["Kid. You kept asking, so here it is. I'm done with this life, my hands shake too much for the keys now. You aren't.",
+          "That DS-4 of yours is a toy, but it's a toy nobody looks at twice. I left you a SHRDSHIV cartridge for the AUX port. Some street kid called Nightjar wrote it. It's rude and it's buggy and it works.",
+          "I gave your comcode to a fixer I trust. Mama Rook, Eighth Street, under the noodle bar. She'll get you started in the biz. Be polite. She remembers everything.",
+          "My notes are attached. Read them before you touch a locked shard. Every runner I buried skipped the notes."],
+        hint:"Click the attached notes to read them. They also sit on your bookcase, with your deck's manual and SHRDSHIV's README."},
+      {from:"rook", subject:"Heron says you're good", wait:true, shards:["0042", "0588"],
+        body:["Heron gave me your comcode. Heron doesn't give me anything, so I'm curious.",
+          "A courier dropped a bag of shards at my counter last night and never came back for it. Shards are information, and information is money. I pay for every shard you finish.",
+          "Start easy. The curfew notice isn't even locked: stick it in your deck with no cracker plugged in and read it. Then plug in SHRDSHIV and crack the night market flyer."],
+        hint:"Click a shard in your stash to insert it, and click a cartridge to plug it in. Rook pays once a shard is done. If one is going bad, the job bar under your deck lets you hand it back for part of the pay."}
     ]},
 
     // ===== stage 1 =====
@@ -39,7 +51,7 @@ window.HR_STORY = {
         body:["Blue lantern. Ha. That flyer was worth more than it looked.",
           "My counter is open to you now. I've got a Paris cart called LA VEUVE that reads feedback by position, and a few warez if you get stuck.",
           "Here's another one from the bag. The Halloran crew's orders. Their cipher scatters whole words across the sectors, so you'll read it in pieces until it's open."],
-        hint:"The Fixer panel is open. Every cracker you buy comes with its manual on your bookcase. Opening every sector of a shard without burning any pays a clean-job bonus."}
+        hint:"Mama Rook's counter is open, top right. Every cracker you buy comes with its manual on your bookcase. Ask her for side jobs on the Jobs shelf if you want extra nuyen. Opening every sector of a shard without losing any pays a clean-job bonus."}
     ]},
 
     // ===== stage 2 =====
@@ -150,7 +162,7 @@ window.HR_STORY = {
           "Whoever you are, thank you."]},
       {from:"rook", subject:"Back at the counter",
         body:["The shutters are up again on Eighth Street.",
-          "You opened {opened} of {total} sectors and made {earned} doing it. {burned} went to static. Not bad for a kid with a calculator.",
+          "You opened {opened} of {total} sectors and made {earned} doing it. {burned} went to static. Not bad for a kid with a DS-4.",
           "Come by any time. There's always another shard."]}
     ]}
   ]

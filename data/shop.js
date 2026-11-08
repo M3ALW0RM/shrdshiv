@@ -16,23 +16,38 @@
 //             Warez probe, bypass, brute, scrap, reset, insight.
 //   needs     optional: {deck:"archon"} means it only runs on that deck (shown in the shop).
 //   stock     the story stage (see data/story.js) when the fixer starts selling it. 0 = from the start.
-//   manual    optional: a file in manuals/ added to the bookcase when bought.
+//   manual    optional: a manual id (see manuals below) added to the bookcase when bought,
+//             or a list of ids, like LA VEUVE's pamphlet and its translation.
 //   blurb     the shop description.
 
 window.HR_SHOP = {
   currency: "¥",
   startNuyen: 0,
+  // Nuyen per sector, by its lock difficulty. Nothing is paid until the shard is settled:
+  // every sector is open or lost, or the player forfeits it (hands it back to Rook).
   payouts: {1:40, 2:70, 3:120, 4:180, 5:260, 6:360},
+  // Extra share when every sector is opened and none is lost.
   cleanBonus: 0.2,
+  // Partial pay.
+  //   friedRate     a shard with lost sectors pays this share of its opened sectors,
+  //                 but only if they are readable on their own (see unreadable).
+  //   forfeitMin/Max  a forfeited shard pays between these shares of its opened sectors.
+  //                 The more sectors opened and the more juice left (the easier it is for
+  //                 Rook's next runner to finish), the closer to forfeitMax.
+  //   unreadable    ciphers whose opened sectors are only fragments until the whole shard
+  //                 is open. A fried shard with one of these pays nothing.
+  partial: {friedRate:0.5, forfeitMin:0.5, forfeitMax:0.85, unreadable:["B", "C", "R"]},
 
   // Manuals the player starts with.
-  startManuals: ["ds4-owners-manual", "shrdshiv-readme"],
+  startManuals: ["heron-tutorial", "ds4-owners-manual", "shrdshiv-readme"],
 
   // Every manual in the game. file is in manuals/, spine is the colour on the bookcase.
   manuals: {
+    "heron-tutorial":           {title:"Heron's notes: running shards", file:"heron-tutorial.html", spine:"#e8dfc4", ink:"#3b2f22"},
     "ds4-owners-manual":        {title:"KESTREL DS-4 Owner's Manual", file:"ds4-owners-manual.html", spine:"#c8c2ad", ink:"#2b2b2b"},
     "shrdshiv-readme":          {title:"SHRDSHIV README", file:"shrdshiv-readme.html", spine:"#1f2a24", ink:"#9fe0b0"},
     "la-veuve-pamphlet":        {title:"LA VEUVE Pamphlet", file:"la-veuve-pamphlet.html", spine:"#26408f", ink:"#f6f2e8"},
+    "la-veuve-translation":     {title:"LA VEUVE, English translation", file:"la-veuve-translation.html", spine:"#f2ede0", ink:"#26408f"},
     "razorback-manual":         {title:"RAZORBACK PRO 5 Manual", file:"razorback-manual.html", spine:"#d9b21b", ink:"#141414"},
     "oracle-zero-field-manual": {title:"ORACLE//ZERO r9 Field Manual", file:"oracle-zero-field-manual.html", spine:"#20262c", ink:"#e8eef2"},
     "archon-7-manual":          {title:"TIANSHU ARCHON-7 User Guide", file:"archon-7-manual.html", spine:"#8a1f1f", ink:"#f3d27a"},
@@ -43,7 +58,7 @@ window.HR_SHOP = {
 
   items: [
     // ---- crackers
-    {id:"veuve", cat:"cracker", name:"LA VEUVE v1.0", maker:"Collectif Bastille", price:300, stock:1, gives:{cracker:"veuve"}, manual:"la-veuve-pamphlet",
+    {id:"veuve", cat:"cracker", name:"LA VEUVE v1.0", maker:"Collectif Bastille", price:300, stock:1, gives:{cracker:"veuve"}, manual:["la-veuve-pamphlet", "la-veuve-translation"],
       blurb:"Reads feedback by position on every lock and keeps a log of symbols you've ruled out. Its probe suggests symbols worth testing."},
     {id:"razor", cat:"cracker", name:"RAZORBACK PRO 5", maker:"CrackWorks Ltd", price:900, stock:3, gives:{cracker:"razor"}, manual:"razorback-manual",
       blurb:"Loud and cheap to run. Spread shot fires one guess at up to 3 locks of the same difficulty for 1 juice. Cheap scans and a half-code probe."},

@@ -63,8 +63,8 @@ const CRACKERS = {
     title:id=>"SHRDSHIV :: " + id,
     boot:["", "    .-.", "   (o.o)  SHRDSHIV", "    |=|   v0.3b", "   __|__  //n1ghtjar"],
     hello:[" corp lock detected", " lemme at it..."], idle:[" no shard in the slot", " feed me, choom"],
-    menu:k=>["1crak 2snif 3warez", (k === "text" ? "4read" : "4play") + " *eject"],
-    tryHint:"#try *del/back", confirm:" [#] do it  [*] nah", scanTitle:"sniffin...",
+    menu:k=>["1-crack 2-snif 3-warez", (k === "text" ? "4-read" : "4-play") + "  *-eject"],
+    tryHint:"#-try  *-del/back", confirm:" #-do it  *-nah", scanTitle:"sniffin...",
     cracked:(i,n)=>["", "   \\o/", " CRACKED", "", " sec" + i + " is ours", " " + pick(["easy money","too clean","corp tears, yum","next."])],
     out:["", "   x_x", " OUT OF JUICE", "", " every locked sec", " went to static.", " shoulda bought a", " better deck lol"],
     sound:{wave:"square", key:720, hit:520, miss:300, ok:[440,554,659,880], bad:110, boot:[220,330,440]}, fx:"tear"
@@ -78,9 +78,9 @@ const CRACKERS = {
     title:id=>"LA VEUVE · " + id,
     boot:["  .=======.", "  ||/////||  LA VEUVE", "  ||     ||  v1.0", "  ||_____||  collectif", "  ||(   )||  bastille", " ==========="],
     hello:[" serrure détectée.", " à la lanterne!"], idle:[" pas de shard.", " liberté, égalité, data."],
-    menu:k=>["1casser 2sonder", "3arsenal " + (k === "text" ? "4lire" : "4jouer") + " *quit"],
+    menu:k=>["1-casser 2-sonder", "3-arsenal " + (k === "text" ? "4-lire" : "4-joue") + " *-fin"],
     pick:{crack:"casser quelle zone?", len:"longueur: quelle zone?", type:"contenu: quelle zone?", sym:"symboles: quelle zone?", probe:"aperçu: quelle zone?", insight:"insight: quelle zone?", bypass:"contourner: zone?", brute:"forcer quelle zone?", scrap:"sacrifier: zone?"},
-    str:{noGuess:" aucun essai encore", back:"*retour", hint:" indice",
+    str:{noGuess:" aucun essai encore", back:"*-retour", hint:" indice",
       need:n=>"il faut " + n + " symboles.", only:r=>"seulement " + r + " ici.", noRep:"pas de répétitions.", noSpend:"aucun essai perdu.",
       codeLen:" longueur du code", symbols:n=>" >> " + n + " symboles", holds:" contient", hardest:" zone la plus dure",
       uses:" utilise", distinct:n=>" >> " + n + " symb. distincts", diffMap:" carte des difficultés", tagsDone:" étiquettes",
@@ -88,7 +88,7 @@ const CRACKERS = {
       probeWord:"sonde", pTest:" tester:", pTestLbl:"tester", noGuessS:" aucun essai", hintW:"aperçu",
       pBlockedS:"bloquée", pSpentS:"épuisée", pCoolS:"attends", pBlocked:"trop forte", pSpent:"épuisée", pCool:"après un essai", pLocked:n=>"à <=" + n + " cand.", pFree:"gratuite", pCharge:"en charge", dry1:" ça viderait", dry2:" le shard.", cost:n=>" -" + n + " essais"},
     scans:{len:"longueur zone", type:"contenu zone", hard:"zone la + dure", sym:"symboles zone", all:"toutes diffic.", map:"carte complète", tags:"étiqueter tout"},
-    tryHint:"#tenter *effacer", confirm:" [#] oui  [*] non", scanTitle:"sondage...",
+    tryHint:"#-tenter *-effacer", confirm:" #-oui  *-non", scanTitle:"sondage...",
     // La Marseillaise, opening phrase: "Allons enfants de la Patrie"
     tune:[[293.66,.27],[293.66,.09],[293.66,.36],[392,.36],[392,.36],[440,.36],[440,.36],[587.33,.72],[493.88,.27],[392,.36]],
     bootHold:3800,
@@ -123,8 +123,8 @@ const CRACKERS = {
     spread:true, rack:true,
     boot:["", " ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "  RAZORBACK PRO 5", "  CRACKWORKS LTD", " ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"],
     hello:[" target acquired", " time to break stuff"], idle:[" no target loaded", " feed the beast"],
-    menu:k=>["1smash 2recon 3load", (k === "text" ? "4read" : "4play") + " *eject"],
-    tryHint:"#fire *del", confirm:" [#] do it  [*] abort", scanTitle:"recon sweep",
+    menu:k=>["1-smash 2-recon 3-load", (k === "text" ? "4-read" : "4-play") + "  *-eject"],
+    tryHint:"#-fire  *-del", confirm:" #-do it  *-abort", scanTitle:"recon sweep",
     cracked:(i,n)=>["", " >>>>>>>>>>>>>>>>>>>>", " tgt " + i + " smashed", " >>>>>>>>>>>>>>>>>>>>", " " + pick(["next!","too easy","boom","get wrecked"])],
     out:["", " XXXXXXXXXXXXXXXXXXXX", " out of ammo", " live tgts slagged", " XXXXXXXXXXXXXXXXXXXX"],
     sound:{wave:"sawtooth", key:420, hit:300, miss:140, ok:[220,277,330,440], bad:70, boot:[110,147,220]}, fx:"shake"
@@ -175,9 +175,9 @@ const CRACKERS = {
     },
     boot:[{t:" ORACLE//ZERO  r9", cls:"inv", full:true}, " counter-intrusion"],
     hello:[" media mounted.", " analysis ready."], idle:[" awaiting media."],
-    menu:k=>["1solve 2scan 3tools", (k === "text" ? "4read" : "4review") + " *eject"],
+    menu:k=>["1-solve 2-scan 3-tools", (k === "text" ? "4-read" : "4-review") + " *-eject"],
     str:{noGuessS:" awaiting"},
-    tryHint:"#submit *del", confirm:" [#] confirm [*] cancel", scanTitle:"scan running",
+    tryHint:"#-submit  *-del", confirm:" #-confirm  *-cancel", scanTitle:"scan running",
     cracked:(i,n)=>["", {t:" DECLASSIFIED ", cls:"inv"}, "", " blk " + String(i).padStart(2,"0") + " clear", " attempts used: " + n, " residue: none"],
     out:["", " [FAIL] budget 0", " sealed blocks purged.", " log closed."],
     sound:{wave:"triangle", key:1200, hit:980, miss:600, ok:[784,1175], bad:400, boot:[523,659,784,1047]}, fx:"sweep"
@@ -256,8 +256,8 @@ function customDef(c){
     title:id=>nm.slice(0, 12) + " :: " + id,
     boot:["", " " + nm, " SPLICE custom build", " " + x.mem + " KB · " + x.runs.map(r=>DECK_SHORT[r]).join("+")],
     hello:[" shard mounted."], idle:[" no shard in the slot."],
-    menu:k=>["1crack 2scan 3warez", (k === "text" ? "4read" : "4play") + (x.logbook ? " 5log" : "") + " *eject"],
-    tryHint:"#try *del/back",
+    menu:k=>["1-crack 2-scan 3-warez", (k === "text" ? "4-read" : "4-play") + (x.logbook ? " 5-log" : "") + " *-eject"],
+    tryHint:"#-try  *-del/back",
     cracked:(i,n)=>["", " OPEN", "", " sec" + i + " cracked", " in " + n + (n === 1 ? " try." : " tries.")],
     out:["", " OUT OF JUICE", "", " locked sectors", " burned to static."],
     cand:!!x.cand, est:!!x.est && seen("est"), ident:!!x.ident && seen("ident"), hasEst:!!x.est, hasIdent:!!x.ident, hasSkim:!!x.skim, hasSurvey:x.map != null,
@@ -298,7 +298,7 @@ function compat(id, deck){
 }
 const CORP_SOUND = {wave:"square", key:720, hit:520, miss:300, ok:[523,659], bad:110, boot:[220,330]};
 const V = () => S.cracker ? CRACKERS[S.cracker] : null;
-const STR = {noGuess:" no guesses yet", back:"*back", hint:" hint",
+const STR = {noGuess:" no guesses yet", back:"*-back", hint:" hint",
   need:n=>"need " + n + " symbols.", only:r=>"only " + r + " here.", noRep:"no repeats here.", noSpend:"no {juice} spent.",
   codeLen:" code length", symbols:n=>" >> " + n + " symbols", holds:" holds", hardest:" hardest locked {sec}",
   uses:" uses", distinct:n=>" >> " + n + " distinct syms", diffMap:" difficulty map", tagsDone:" content tags",
@@ -563,7 +563,7 @@ function freshShard(def){
   }))});
 }
 const DECKS = {
-  ds4:{name:"KESTREL DS-4", short:"DS-4", maker:"Kestrel DataSystems", sn:"44-0917", bays:2, blurb:"Consumer datadeck. Cheap, tough, 2 expansion bays. Looks like a calculator."},
+  ds4:{name:"KESTREL DS-4", short:"DS-4", maker:"Kestrel DataSystems", sn:"44-0917", bays:2, blurb:"Consumer datadeck. Cheap, tough, 2 expansion bays. A green-screen terminal in a putty case."},
   archon:{name:"TIANSHU ARCHON-7", short:"ARCHON-7", maker:"Tianshu Systems", sn:"TS7-2219", bays:5, blurb:"Shenzhen-built runner deck by Tianshu 天枢. Xuanji OS, multi-window display, 7 programmable side keys, 5 expansion bays."}
 };
 const HW = [["auto","AUTO-SCAN"],["map","SURVEY"],["tags","INDEXER"],["cheap","EFFICIENCY"],["coproc","CO-PROC"]];
@@ -1104,15 +1104,15 @@ function render(){
   const inCracker = !!v && !["corp","corpKey","corpMsg"].includes(m) && !(ui.play && ui.play.corp && m === "play") && !(ui.read && ui.read.corp && m === "read");
   if(m === "idle"){
     if(v) L = v.boot.concat([""]).concat(v.idle);
-    else L = corpHeader().concat(["", " Please insert a", " data shard.", "", {t:" Kestrel. We remember.", cls:"dim"}]);
+    else L = corpHeader().concat(["", " Please insert a", " data shard.", "", {t:" Kestrel. We never", cls:"dim"}, {t:"         lose sight.", cls:"dim"}]);
   }
   else if(m === "corp"){
     const st = shardStatus(S.inserted), lockN = lockedIdx(sh).length, burnN = sh.sectors.filter(s=>s.status === "burned").length;
     L = corpHeader().concat([" Shard " + def.id]);
     if(lockN > 0 && !traced(sh)){
-      L = L.concat([" This shard is", " encrypted.", " Authorization needed.", "", " [1] Enter key", " [2] Eject"]);
+      L = L.concat([" This shard is", " encrypted.", " Authorization needed.", "", " 1-enter key", " 2-eject"]);
     } else if(lockN > 0){
-      L = L.concat([{t:" INTEGRITY ERROR", cls:"inv"}, " This shard has been", " modified. Contents", " cannot be displayed.", " [1] Enter key", " [2] Eject"]);
+      L = L.concat([{t:" INTEGRITY ERROR", cls:"inv"}, " This shard has been", " modified. Contents", " cannot be displayed.", " 1-enter key", " 2-eject"]);
     } else {
       if(def.kind === "text") L = L.concat([" Text document", " Pages: " + docPages(def, sh, -1).length]);
       else {
@@ -1120,7 +1120,7 @@ function render(){
         L = L.concat([" Voice recording", " Length: 0:" + String(secs).padStart(2,"0")]);
       }
       L.push(burnN ? " Damaged: " + burnN + "/" + sh.sectors.length + " lost" : " Integrity: verified");
-      L = L.concat(["", def.kind === "text" ? " [1] Read  [2] Eject" : " [1] Play  [2] Eject"]);
+      L = L.concat(["", def.kind === "text" ? " 1-read  2-eject" : " 1-play  2-eject"]);
     }
   }
   else if(m === "corpKey"){
@@ -1134,7 +1134,7 @@ function render(){
     if(!a.length) L.push(" nothing logged yet.", " scans, ids and", " estimates land here.");
     a.slice(pg * 7, pg * 7 + 7).forEach(t=>L.push(" " + t.slice(0, W - 1)));
     while(L.length < 10) L.push("");
-    L.push({t:"#next Bprev *map", cls:"dim"});
+    L.push({t:"#-next B-prev *-map", cls:"dim"});
   }
   else if(m === "map"){
     let encLine = say("{enc}") + " none";
@@ -1163,7 +1163,7 @@ function render(){
     const multi = v.spread && ui.pickFor === "crack";
     L = [multi ? "load up to 3 tgts" : (v.pick && v.pick[ui.pickFor]) || say(titles[ui.pickFor] || "which {sec}?"), "-".repeat(W)];
     sh.sectors.forEach((s,i)=>{ if(s.status === "locked") L.push((multi ? (ui.sel.includes(i) ? ">" : " ") : " ") + v.idx(i+1) + " " + say("{sec}") + " " + (i+1) + ((F.autoMap || s.known.diff) ? "  d" + diffOf(s) : "")); });
-    if(multi){ L.push(""); L.push({t:"same d only", cls:"dim"}); L.push({t:"#fire (" + ui.sel.length + ") *back", cls:"dim"}); }
+    if(multi){ L.push(""); L.push({t:"same d only", cls:"dim"}); L.push({t:"#-fire (" + ui.sel.length + ") *-back", cls:"dim"}); }
     else { L.push(""); L.push({t:T("back"), cls:"dim"}); }
   }
   else if(m === "crack" && v && (v.engine || v.cand)){
@@ -1175,7 +1175,7 @@ function render(){
     if(Object.keys(p.hints).length){ let hs = ""; for(let i=0;i<cfg.len;i++) hs += p.hints[i] || "_"; tail.push(" hint " + hs); }
     if(F.elim){ const ab = absentSyms(p); if(ab.length) tail.push(" excl " + (ab.length > 7 ? ab.join("") : ab.join(" "))); }
     if(CAND.busy) tail.push(" cand computing" + ".".repeat(Math.floor(performance.now()/300) % 4));
-    else { const c = twGet("cand|" + CAND.key, CAND.count); tail.push(CAND.count === 1 ? {t:" LOCKED ON  [#] submit", cls:"inv"} : " cand " + fmtCount(c)); }
+    else { const c = twGet("cand|" + CAND.key, CAND.count); tail.push(CAND.count === 1 ? {t:" LOCKED ON  #-submit", cls:"inv"} : " cand " + fmtCount(c)); }
     probeLines(s, p).forEach(t=>tail.push(t));
     const room = 11 - L.length - tail.length - 2;
     p.history.slice(-Math.max(1, v.histRows ? Math.min(room, v.histRows) : room)).forEach(h=>L.push(histLine(h)));
@@ -1220,16 +1220,16 @@ function render(){
     while(L.length < 9) L.push("");
     L.push("> " + pad(ui.input, cfg.len).replace(/ /g,"_"));
     const live = cols.filter(i=>sh.sectors[i].status === "locked").length;
-    L.push({t:"#fire x" + live + " *del", cls:"dim"});
+    L.push({t:"#-fire x" + live + " *-del", cls:"dim"});
   }
   else if(m === "sniff"){
     L = [say("{sniff}"), juiceLine(sh)];
-    scansNow().forEach((sc,i)=>L.push((i+1) + " " + pad((v.scans && v.scans[sc.k]) || say(sc.label), 16) + "-" + scanCost(sc)));
+    scansNow().forEach((sc,i)=>L.push((i+1) + "-" + pad((v.scans && v.scans[sc.k]) || say(sc.label), 16) + "-" + scanCost(sc)));
     L.push(""); L.push({t:T("back"), cls:"dim"});
   }
   else if(m === "warez"){
     L = [say("{warez}"), juiceLine(sh)];
-    WARE.forEach((w,i)=>L.push((i+1) + " " + pad(w.name, 12) + "x" + S.ware[w.k]));
+    WARE.forEach((w,i)=>L.push((i+1) + "-" + pad(w.name, 12) + "x" + S.ware[w.k]));
     L.push(""); L.push({t:T("back"), cls:"dim"});
   }
   else if(m === "confirm"){ L = ui.confirm.lines.concat(["", v.confirm]); }
@@ -1240,8 +1240,8 @@ function render(){
     if(s.status === "open") wrap(def.sectors[pl.i].text, W-1).forEach(l=>L.push({t:" " + l, raw:true}));
     else for(let k=0;k<3;k++) L.push({t:" " + garble(18), raw:true});
     while(L.length < 9) L.push("");
-    L.push({t:"#next Bprev 0again", cls:"dim"});
-    L.push({t:"1-" + sh.sectors.length + " jump *stop", cls:"dim"});
+    L.push({t:"#-next B-prev 0-again", cls:"dim"});
+    L.push({t:"1.." + sh.sectors.length + "-jump  *-stop", cls:"dim"});
   }
   else if(m === "read"){
     const rd = ui.read, pages = docPages(def, sh, rd.focus);
@@ -1250,8 +1250,8 @@ function render(){
       "pg " + (rd.page+1) + "/" + pages.length + (rd.focus >= 0 ? "  " + say("{sec}") + (rd.focus+1) + " only" : "")];
     pages[rd.page].forEach(l=>L.push({t:l, raw:true}));
     while(L.length < 9) L.push("");
-    L.push({t:"#pg+ Bpg- *back", cls:"dim"});
-    L.push({t: rd.corp ? "" : "1-" + sh.sectors.length + " one " + say("{sec}") + " 0 all", cls:"dim"});
+    L.push({t:"#-pg+ B-pg- *-back", cls:"dim"});
+    L.push({t: rd.corp ? "" : "1.." + sh.sectors.length + "-" + say("{sec}") + " 0-all", cls:"dim"});
   }
   if(inCracker && v && v.banner && !ui.raw && !["map","crack","glitch"].includes(m) && L[0] !== v.banner) L = [v.banner].concat(L);
   if(inCracker && v && v.banner) fit11(L);
@@ -1268,11 +1268,13 @@ function render(){
 const SEGS = {"0":"abcdef","1":"bc","2":"abdeg","3":"abcdg","4":"bcfg","5":"acdfg","6":"acdefg","7":"abc","8":"abcdefg","9":"abcdfg","A":"abcefg","B":"cdefg","C":"adef","D":"bcdeg","E":"adefg","F":"aefg","-":"g"};
 const SEGP = {a:"6,2 24,2 20,6 10,6", b:"25,3 25,22 21,20 21,7", c:"25,26 25,45 21,41 21,28", d:"6,46 24,46 20,42 10,42", e:"5,26 5,45 9,41 9,28", f:"5,3 5,22 9,20 9,7", g:"7,24 11,21 19,21 23,24 19,27 11,27"};
 function renderSeg(){
-  const txt = (ui.mode === "crack" || ui.mode === "spread" || ui.mode === "corpKey") ? ui.input : "";
-  document.getElementById("seg").innerHTML = pad(txt, 6).split("").map(c=>{
-    const on = SEGS[c] || "";
-    return '<svg viewBox="0 0 30 48">' + Object.keys(SEGP).map(k=>'<polygon class="' + (on.includes(k) ? "on" : "off") + '" points="' + SEGP[k] + '"/>').join("") + "</svg>";
-  }).join("");
+  const el = document.getElementById("seg"); if(!el || el.hidden) return;
+  const typing = ui.mode === "crack" || ui.mode === "spread" || ui.mode === "corpKey";
+  const v = V(), where = S.inserted ? "~/" + S.inserted : "~";
+  const who = v && S.cracker ? v.name.split(" ")[0].toLowerCase().replace(/[^a-z0-9]/g, "") : "kfw2";
+  const prompt = ui.mode === "corpKey" ? "key" : typing ? "guess" : who + ":" + where;
+  el.innerHTML = '<span class="cli-p">' + prompt + (typing ? "&gt;" : "$") + '</span> <span class="cli-in">' + (typing ? ui.input.replace(/[<&]/g, "") : "") + '</span><span class="cli-cur" aria-hidden="true"></span>';
+  el.dataset.typing = typing ? "1" : "";
 }
 
 // ---------- flow ----------
@@ -1973,12 +1975,12 @@ function deckHTML(id){
       </div>
       <div class="bezel">
         <div class="oled" id="oled"><pre id="screen" aria-live="polite"></pre></div>
-        <div class="seg" id="seg" aria-hidden="true"></div>
+        <div class="cli" id="seg" aria-hidden="true"></div>
       </div>
       <div class="therm" id="therm" role="group" aria-label="Thermal monitor">
+        <span class="therm-lbl">TEMP</span><span class="therm-digits" id="thermDigits" aria-live="off"></span><span class="therm-lbl">°C</span>
         <div class="cool-bar" id="coolBar" aria-label="Cooldown progress"></div>
-        <div class="therm-row"><span class="therm-lbl">TEMP</span><span class="therm-digits" id="thermDigits" aria-live="off"></span><span class="therm-lbl">°C</span>
-          <span class="ovh"><i id="ovhLed"></i><span class="therm-lbl">OVERHEAT</span></span></div>
+        <span class="ovh"><i id="ovhLed"></i><span class="therm-lbl">OVERHEAT</span></span>
       </div>
       <div class="keypad" id="keypad"></div>
       <div class="bays" id="bays"></div>
@@ -3152,7 +3154,8 @@ function renderTherm(){
   if(S.deck !== "ds4") return;
   const dg = document.getElementById("thermDigits"); if(!dg) return;
   const T = THERM.ds4, t = Math.max(0, Math.min(99, Math.round(ui.temp)));
-  dg.innerHTML = String(t).padStart(2, "0").split("").map(c=>{ const on = SEGS[c] || ""; return '<svg viewBox="0 0 30 48">' + Object.keys(SEGP).map(k=>'<polygon class="' + (on.includes(k) ? "on" : "off") + '" points="' + SEGP[k] + '"/>').join("") + "</svg>"; }).join("");
+  dg.textContent = String(t).padStart(2, "0");
+  dg.classList.toggle("hot", ui.temp >= T.warn);
   dg.setAttribute("aria-label", t + " degrees");
   const led = document.getElementById("ovhLed");
   led.className = ui.heat === "ds4" || ui.temp >= T.warn ? "on" + (ui.temp >= T.warn + 8 || ui.heat === "ds4" ? " blink" : "") : "";
@@ -3169,8 +3172,17 @@ function syncHw(){
 
 // ---------- build controls ----------
 function buildKeypad(){
-  const rows = ["1","2","3","A","4","5","6","B","7","8","9","C","E","0","F","D"];
   const kp = document.getElementById("keypad");
+  if(S.deck === "ds4"){
+    // a strip keyboard: two rows of eight, then ESC and RETURN
+    const rows = ["1","2","3","4","5","6","7","8","9","0","A","B","C","D","E","F"];
+    kp.className = "keypad kbd";
+    kp.innerHTML = rows.map(k=>'<button type="button" class="key' + (/[A-F]/.test(k) ? " hex" : "") + '" data-k="' + k + '"><span>' + k + "</span></button>").join("") +
+      '<button type="button" class="key wide esc" data-k="*" aria-label="Back"><span>*</span><small>ESC</small></button><span class="kbd-gap" aria-hidden="true">KESTREL</span><button type="button" class="key wide ent" data-k="#" aria-label="Enter"><span>#</span><small>RETURN</small></button>';
+    return;
+  }
+  kp.className = "keypad";
+  const rows = ["1","2","3","A","4","5","6","B","7","8","9","C","E","0","F","D"];
   kp.innerHTML = rows.map(k=>'<button type="button" class="key' + (/[A-F]/.test(k) ? " hex" : "") + '" data-k="' + k + '">' + k + "</button>").join("") +
     '<button type="button" class="key wide" data-k="*">* BACK</button><button type="button" class="key wide ent" data-k="#"># ENTER</button>';
 }
@@ -3221,7 +3233,18 @@ toHome();
 window.HR_ENGINE = {
   get S(){ return S; }, save, render, renderTray, switchDeck, plugCracker, syncHw, eject, cancelTimers, toHome,
   CRACKERS, DECKS, HW, WARE, SHARDS, DIFF, defOf, freshShard,
-  reset(){ cancelTimers(); S = freshState(); save(); location.reload(); }
+  reset(){ cancelTimers(); S = freshState(); save(); location.reload(); },
+  // side jobs: add a shard made at runtime
+  addShard(def){ const d = JSON.parse(JSON.stringify(def)); const i = SHARDS.findIndex(x=>x.id === d.id); if(i >= 0) SHARDS.splice(i, 1); SHARDS.push(d); prepShard(d); S.shards[d.id] = freshShard(d); save(); },
+  dropShard(id){ if(S.inserted === id) eject(); const i = SHARDS.findIndex(x=>x.id === id); if(i >= 0) SHARDS.splice(i, 1); delete S.shards[id]; save(); },
+  // Rook's clean copy: every sector readable, no residue
+  restoreCopy(id, src){
+    if(S.inserted === id) eject();
+    const d = JSON.parse(JSON.stringify(src)); const i = SHARDS.findIndex(x=>x.id === id); if(i >= 0) SHARDS[i] = d; else SHARDS.push(d);
+    prepShard(d); const sh = freshShard(d);
+    sh.sectors.forEach(x=>{ x.status = "open"; x.trace = false; x.puzzle = null; }); sh.copy = true; sh.junk = [];
+    S.shards[id] = sh; save();
+  }
 };
 })();
 

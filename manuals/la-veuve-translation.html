@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Veuve, English Translation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
+<style>
+/* Layout: a photocopied, typewritten translation zine: grey toner speckle, a staple, the translator's handwritten-looking notes in the margin and numbered footnotes at the end. Committed single light look. */
+:root{
+  --desk:#4a4640; --paper:#f4f1ea; --toner:#1d1d1f; --soft:#555356; --blue:#26408f; --red:#b8282f; --pencil:#6b5a3e; --rule:#cfc9bd;
+  --f-type:"Courier Prime","Courier New",monospace; --f-stamp:"Special Elite","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--desk)}
+body{margin:0;background:var(--desk);color:var(--toner);font:16.5px/1.65 var(--f-type);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:36px 60px}
+.zine{position:relative;max-width:780px;margin:0 auto;background:var(--paper);box-shadow:0 20px 50px #000a;overflow:hidden}
+.zine::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(#0000001c 0.7px,transparent 1px) 0 0/7px 7px, linear-gradient(90deg,#00000010,transparent 6%,transparent 94%,#00000010)}
+.staple{position:absolute;top:18px;left:46px;width:34px;height:5px;border-radius:2px;background:linear-gradient(#bfc3c7,#7d8287);box-shadow:0 1px 1px #0005}
+.inner{position:relative;padding:54px 64px 48px}
+@media (max-width:620px){.inner{padding:46px 22px 36px}.staple{left:22px}}
+.trband{display:inline-block;font:400 13px var(--f-stamp);letter-spacing:.14em;border:2px solid var(--toner);padding:3px 10px;margin-bottom:18px}
+h1{margin:0;font:700 clamp(32px,7vw,48px)/1.05 var(--f-type);letter-spacing:-.01em}
+.sub{margin:6px 0 0;color:var(--soft)}
+.credit{margin:18px 0 0;padding:12px 14px;border:1px dashed var(--soft);font-size:15px}
+.credit b{font-weight:700}
+h2{margin:34px 0 8px;font:700 20px var(--f-type);text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--toner);padding-bottom:2px}
+h2 small{display:block;font:400 13px var(--f-type);letter-spacing:.08em;color:var(--soft);text-transform:none}
+p{margin:0 0 12px;max-width:64ch}
+sup a{color:var(--red);text-decoration:none;font-weight:700;font-size:12px;padding:0 1px}
+sup a:focus-visible{outline:2px solid var(--red)}
+.orig{color:var(--soft);font-style:italic}
+.tw{overflow-x:auto;margin:6px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;border-bottom:2px solid var(--toner);padding:3px 12px 3px 0;font-weight:700}
+td{padding:4px 12px 4px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td.n{text-align:right;font-weight:700}
+.screen{font:15px/1.25 var(--f-type);background:#1d1d1f;color:#e9e9e9;padding:12px 14px;white-space:pre;overflow-x:auto;margin:8px 0 14px;filter:contrast(1.2)}
+.margin{float:right;width:min(210px,40%);margin:4px -8px 10px 16px;transform:rotate(1.5deg);font:400 14px/1.4 var(--f-stamp);color:var(--pencil);border-left:2px solid var(--pencil);padding:4px 0 4px 10px}
+@media (max-width:620px){.margin{float:none;width:auto;margin:6px 0 12px;transform:none}}
+.end{text-align:center;margin:28px 0 0;font-weight:700}
+.notes{margin-top:30px;border-top:1px solid var(--toner);padding-top:12px;font-size:14.5px}
+.notes h3{margin:0 0 8px;font:700 14px var(--f-type);letter-spacing:.12em;text-transform:uppercase}
+.notes ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.notes li{max-width:66ch}
+.notes li:target{background:#f6e7b8}
+.notes a.back{color:var(--red);text-decoration:none;margin-left:4px}
+footer{padding:0 64px 30px;color:var(--soft);font-size:13px}
+@media (max-width:620px){footer{padding:0 22px 26px}}
+</style>
+</head>
+<body>
+<div class="zine">
+  <span class="staple" aria-hidden="true"></span>
+  <div class="inner">
+    <span class="trband">ENGLISH TRANSLATION · UNOFFICIAL</span>
+    <h1>The Widow</h1>
+    <p class="sub">LA VEUVE v1.0. Declaration of the Rights of the Comrade.</p>
+    <p class="sub">From the pamphlet by the Collectif Bastille, Paris. <span class="orig">"Ne se vend pas": not for sale.</span></p>
+    <div class="credit"><b>A note before you start.</b> This is my translation of the pamphlet that ships with LA VEUVE. The collective only prints in French, on purpose, so someone has to do this. I kept the program's French words where you'll see them on your screen, and put my own notes at the bottom. Any mistakes are mine, not theirs.<br>Translated by M. Okoro, Havenport, after a trip I am still recovering from.<sup><a href="#n1" id="r1">1</a></sup></div>
+
+    <h2>Preamble</h2>
+    <p>Two centuries ago, the people of Paris called the guillotine <i>la veuve</i>, the widow, because she made so many.<sup><a href="#n2" id="r2">2</a></sup> We give her name to this program for a simpler reason: she puts an end to tyrannies.</p>
+    <p>The corporations hide their crimes behind locks they believe cannot be broken. They are wrong. Here is the blade. Use it for the truth, share it freely, and never sell it.</p>
+    <p class="orig">Collectif Bastille, written in the tunnels under the 14th arrondissement.<sup><a href="#n3" id="r3">3</a></sup></p>
+
+    <h2>Article One <small>On words</small></h2>
+    <p>The Widow speaks the language of the street. Learn her words.</p>
+    <div class="tw"><table>
+      <tr><th>She says</th><th>It means</th></tr>
+      <tr><td>zone n°1, n°2</td><td>a sector: one lock among several on a shard</td></tr>
+      <tr><td>essais</td><td>attempts. The tries left on the shard, shared by everyone who comes after you</td></tr>
+      <tr><td>captif</td><td>captive. A zone still locked, still in the corporation's hands</td></tr>
+      <tr><td>libre</td><td>free. A zone that has been liberated</td></tr>
+      <tr><td>perdu</td><td>lost. A zone gone to static</td></tr>
+      <tr><td>casser</td><td>to break. Breaking a lock</td></tr>
+      <tr><td>sonder</td><td>to sound out. Questioning the lock before you strike</td></tr>
+      <tr><td>arsenal</td><td>your single-use weapons</td></tr>
+    </table></div>
+    <p class="margin">"essais" is the same word as juice on SHRDSHIV. Same pool. The French just make it sound like a moral duty.</p>
+
+    <h2>Article Two <small>On the map</small></h2>
+    <p>Every shard begins with a map of what is still captive.</p>
+    <div class="screen">LA VEUVE · 0588
+chiffre SEGLOCK
+essais 12 ▒▒▒▒▒▒▒▒▒▒
+n°1 captif d? ?????
+n°2 libre RULES
+1-casser 2-sonder
+3-arsenal 4-lire *-fin</div>
+    <p>Press 1 to break a zone, 2 to sound it out, 3 for your arsenal, 4 to read or listen to what you have freed. Press * to finish and leave.<sup><a href="#n4" id="r4">4</a></sup></p>
+
+    <h2>Article Three <small>On the marks</small></h2>
+    <p>Every strike is judged by stars, as every citizen deserves.</p>
+    <div class="tw"><table>
+      <tr><th>Mark</th><th>Meaning</th></tr>
+      <tr><td>★</td><td>the right symbol, in its rightful place</td></tr>
+      <tr><td>☆</td><td>the right symbol, out of place</td></tr>
+      <tr><td>·</td><td>absent. It has no business being there</td></tr>
+    </table></div>
+    <p>This is our pride: The Widow sees every position, at every level. On their hardest locks, the corporations' readers hide which symbol was right and give you only a total. We refuse. Every star stands under the symbol that earned it. Nothing is hidden from the people.</p>
+    <p class="margin">This is the real reason to buy it. On d3 and up, SHRDSHIV only gives you a count. The Widow tells you where.</p>
+
+    <h2>Article Four <small>On sounding out</small></h2>
+    <p>Before you strike, you can question the lock. Every question costs attempts.</p>
+    <div class="tw"><table>
+      <tr><th>Question</th><th>Attempts</th></tr>
+      <tr><td>length of a zone: how long is the code?</td><td class="n">1</td></tr>
+      <tr><td>contents of a zone: a name, a place, a time?</td><td class="n">2</td></tr>
+      <tr><td>hardest zone: which zone resists the most?</td><td class="n">3</td></tr>
+      <tr><td>symbols of a zone: how many symbols does it use?</td><td class="n">4</td></tr>
+      <tr><td>every difficulty: the strength of every zone</td><td class="n">5</td></tr>
+      <tr><td>full map: the whole map, our own tool</td><td class="n">1</td></tr>
+      <tr><td>tag everything: the contents of every zone, our own tool</td><td class="n">1</td></tr>
+    </table></div>
+    <p>The last two are the collective's own tools. Use them first: they are the cheapest.<sup><a href="#n5" id="r5">5</a></sup></p>
+
+    <h2>Article Five <small>On the whisper</small></h2>
+    <p>When the lock will not give, press # three times without typing anything, and The Widow will whisper the symbols worth testing:</p>
+    <div class="screen"> tester: 1 3 4
+ sonde [###] -1 x1</div>
+    <p>She will not dictate the answer. The people decide. Every whisper costs one attempt, and she will only whisper twice per shard, because a revolution that waits to be told what to do is no revolution.</p>
+
+    <p class="end">Liberté, égalité, data.<sup><a href="#n6" id="r6">6</a></sup></p>
+    <p class="orig" style="text-align:center">Printed by hand · Copy it · Pass it on · Never sell it</p>
+
+    <section class="notes" aria-labelledby="tn">
+      <h3 id="tn">Translator's notes</h3>
+      <ol>
+        <li id="n1">I went to Paris to buy this program in person, because the collective doesn't ship. Nobody told me Paris isn't a city anymore. It's the Grand Paris sprawl, forty kilometres of arcology towers stacked on top of the old suburbs, and the old city sits in the middle of it like a museum nobody can afford to enter. It took me two days to find the right Métro line. <a class="back" href="#r1" aria-label="Back to the text">↩</a></li>
+        <li id="n2">Yes, they really called it that. I checked. A tour guide in what's left of the Place de la Concorde told me the same story, then tried to sell me a commemorative guillotine keychain for 90 euros. <a class="back" href="#r2" aria-label="Back to the text">↩</a></li>
+        <li id="n3">The 14th is where the old catacombs are. The bones were moved out decades ago and the tunnels are server farms now, cooled by the groundwater. You go down through a laundromat on Rue Daguerre. You don't come up the same way. The collective met me in a former ossuary lit by rack lights, and offered me wine I would not recommend. <a class="back" href="#r3" aria-label="Back to the text">↩</a></li>
+        <li id="n4">The original says "* pour en finir et partir", which is more dramatic than it needs to be. The key on the screen reads "fin", meaning end. <a class="back" href="#r4" aria-label="Back to the text">↩</a></li>
+        <li id="n5">True. The full map for 1 attempt is the best deal in the program. Use it on every shard, before anything else. <a class="back" href="#r5" aria-label="Back to the text">↩</a></li>
+        <li id="n6">"Liberty, equality, data." I saw it spray-painted on the side of a Seine cargo barge on my way out, in letters taller than me. The barge belonged to a megacorp. I like to think they never noticed. <a class="back" href="#r6" aria-label="Back to the text">↩</a></li>
+      </ol>
+    </section>
+  </div>
+  <footer>Unofficial translation. The Collectif Bastille has not approved it and would probably object to the footnotes.</footer>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Havenport Shards
 
-A single-player cracking game. You start with a Kestrel DS-4, the SHRDSHIV cartridge and a lead. Crack shards, earn nuyen, buy better gear at Mama Rook's counter and follow the story to the end.
+A single-player cracking game. You start with a Kestrel DS-4, the SHRDSHIV cartridge, notes from your mentor Heron and a lead. Crack shards, earn nuyen, buy better gear at Mama Rook's counter and follow the story to the end.
 
 No build step. Open `index.html` from disk, or upload the folder to GitHub Pages as is.
 
@@ -14,7 +14,8 @@ js/engine.js        the cracking engine (decks, crackers, hardware, warez, ICE)
 js/game.js          wallet, story progress, shop, bookcase, saves
 data/shards.js      every shard: text, audio, ciphers, ICE
 data/story.js       contacts and the story steps (messages and what each step unlocks)
-data/shop.js        prices, payouts and the manual list
+data/shop.js        prices, payouts, partial-pay rules and the manual list
+data/jobs.js        Mama Rook's side jobs: tiers and the pool of job texts
 manuals/*.html      one standalone page per manual on the bookcase
 ```
 
@@ -22,13 +23,15 @@ The `data/` files are plain JavaScript so the game works from `file://` too. Eac
 
 ## Common edits
 
-**Change a price or payout.** `data/shop.js`. `payouts` is nuyen per sector by difficulty level, `cleanBonus` is the extra share for a shard cracked with nothing burned.
+**Change a price or payout.** `data/shop.js`. `payouts` is nuyen per sector by difficulty level, `cleanBonus` is the extra share for a shard cracked with nothing burned. Nothing is paid until a shard is done or handed back. `partial` sets what a fried shard pays (only for sectors readable on their own) and the range a handed-back shard pays.
+
+**Add or change side jobs.** `data/jobs.js`. Each job is a few short texts, one per sector. The tier decides how hard the locks are, which ciphers it can use and when Rook starts offering it. Rook's messages for jobs and for fried or handed-back shards are in `lines`.
 
 **Add a shard.** Copy an entry in `data/shards.js` and give it a new `id`. Then give it to the player in a story step in `data/story.js` by adding its id to that step's `give` list, for example `give: ["0042", "<id>"]`.
 
 **Write or change a message.** `data/story.js`. A step fires once everything in its `after` list is cracked. `{opened}`, `{total}`, `{burned}` and `{earned}` in a message are filled in from the player's run.
 
-**Add an item to the shop.** Add a line to `items` in `data/shop.js`. `stock` is the story stage it appears at, `needs` hides it until the player owns something (for example the ARCHON-7), `manual` is the bookcase entry it comes with.
+**Add an item to the shop.** Add a line to `items` in `data/shop.js`. `stock` is the story stage it appears at, `needs` hides it until the player owns something (for example the ARCHON-7), `manual` is the bookcase entry it comes with (or a list of them).
 
 **Add or edit a manual.** Each file in `manuals/` is a normal web page, so edit it like any HTML. To add a new one, put the file in `manuals/`, add an entry to `manuals` in `data/shop.js` (title, file, spine and ink colours), and point an item's `manual` at it.
 

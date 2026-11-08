@@ -32,11 +32,13 @@ p{margin:0;max-width:66ch}
 ul,ol{margin:0;padding-left:22px;display:grid;gap:4px;max-width:64ch}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:640px){.two{grid-template-columns:minmax(0,1fr)}}
-.keypad{display:grid;grid-template-columns:repeat(4,46px);gap:6px;background:#cdc4aa;padding:12px;border-radius:10px;justify-self:start;box-shadow:inset 0 -3px 0 #a39a80}
-.keypad b{display:grid;place-items:center;height:40px;border-radius:6px;background:#3a3d40;color:#ece6d4;font:600 15px var(--f-body);box-shadow:0 3px 0 #1e2022}
-.keypad b.hex{background:#e9a440;color:#2a1a05;box-shadow:0 3px 0 #9c6a1e}
-.keypad b.w{grid-column:span 2}
-.screen{background:var(--screen);color:var(--screen-ink);font:20px/1.15 var(--f-scr);padding:12px 14px;border-radius:6px;white-space:pre;overflow-x:auto;box-shadow:inset 0 0 0 4px #0f201c;max-width:100%}
+.keypad{display:grid;grid-template-columns:repeat(8,minmax(0,34px));gap:4px;background:#26241f;padding:8px;border-radius:8px;justify-self:start;box-shadow:inset 0 2px 4px #000a;max-width:100%}
+.keypad b{display:grid;align-content:start;padding:2px 5px;height:32px;border-radius:3px;background:#34362f;color:#d9e8dc;font:400 19px/1 var(--f-scr);box-shadow:0 2px 0 #141512}
+.keypad b.hex{color:#ffb547}
+.keypad b.w{grid-column:span 3;font-size:14px;align-content:center}
+.keypad b.ent{background:#2f4a37;color:#8dffa8}
+.keypad i{grid-column:span 2}
+.screen{background:#030805;color:#8dffa8;text-shadow:0 0 4px #8dffa855;font:20px/1.15 var(--f-scr);padding:12px 14px;border-radius:6px;white-space:pre;overflow-x:auto;box-shadow:inset 0 0 0 4px #0f201c;max-width:100%}
 .note{background:var(--paper-2);border-left:4px solid var(--slate);padding:10px 14px}
 .caution{background:#f3dccd;border-left:4px solid var(--warn);padding:10px 14px}
 .caution b,.note b{font-family:var(--f-head);letter-spacing:.08em;text-transform:uppercase}
@@ -59,19 +61,19 @@ footer{padding:18px 40px 30px;color:var(--muted);font-size:13px;border-top:1px s
     <section>
       <h2>1 <span>Welcome</span></h2>
       <p>Thank you for choosing the Kestrel DS-4. Your deck reads data shards: small sealed memories that carry text documents and voice recordings. Most shards you will receive are encrypted. Only the shard's owner, holding its 6-digit key, can open them.</p>
-      <p>Kestrel. We remember.</p>
+      <p><b>Kestrel. We never lose sight.</b></p>
     </section>
 
     <section>
       <h2>2 <span>Controls</span></h2>
       <div class="two">
-        <div class="keypad" aria-label="DS-4 keypad">
-          <b>1</b><b>2</b><b>3</b><b class="hex">A</b><b>4</b><b>5</b><b>6</b><b class="hex">B</b><b>7</b><b>8</b><b>9</b><b class="hex">C</b><b class="hex">E</b><b>0</b><b class="hex">F</b><b class="hex">D</b><b class="w">* BACK</b><b class="w"># ENTER</b>
+        <div class="keypad" aria-label="DS-4 keyboard">
+          <b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b>0</b><b class="hex">A</b><b class="hex">B</b><b class="hex">C</b><b class="hex">D</b><b class="hex">E</b><b class="hex">F</b><b class="w">* ESC</b><i></i><b class="w ent"># RETURN</b>
         </div>
         <ul>
           <li><b>0 to 9 and A to F</b> enter numbers and menu choices.</li>
-          <li><b>#</b> confirms, turns pages forward and plays the next part of a recording.</li>
-          <li><b>*</b> goes back, deletes a typed character, or ejects from the main screen.</li>
+          <li><b>#</b> (RETURN) confirms, turns pages forward and plays the next part of a recording.</li>
+          <li><b>*</b> (ESC) goes back, deletes a typed character, or ejects from the main screen.</li>
           <li><b>B</b> turns a page back.</li>
           <li>If your deck is connected to a keyboard, Enter works as # and Backspace or Esc as *.</li>
         </ul>
@@ -85,6 +87,7 @@ footer{padding:18px 40px 30px;color:var(--muted);font-size:13px;border-top:1px s
         <li>ShardView shows what kind of shard it is and its status.</li>
         <li>Press <b>1</b> to read a text document or play a voice recording. Press <b>2</b> to eject.</li>
       </ol>
+      <p>Every DS-4 screen lists its keys at the bottom, as a key, a dash and what it does: <b>1-read</b> means press 1 to read. The command line under the screen shows where you are and echoes what you type.</p>
       <div class="screen">KESTREL DATASYSTEMS
 ShardView 4.2
  Shard 0042
@@ -92,12 +95,12 @@ ShardView 4.2
  Pages: 1
  Integrity: verified
 
- [1] Read  [2] Eject</div>
+ 1-read  2-eject</div>
       <h3>Shard status</h3>
       <div class="tw"><table>
         <tr><th>ShardView says</th><th>What it means</th></tr>
         <tr><td>Integrity: verified</td><td>The shard is readable. Enjoy your content.</td></tr>
-        <tr><td>This shard is encrypted</td><td>Press 1 and enter the owner's 6-digit key. A wrong key is recorded.</td></tr>
+        <tr><td>This shard is encrypted</td><td>Press 1 and type the owner's 6-digit key on the command line. A wrong key is recorded.</td></tr>
         <tr><td>INTEGRITY ERROR</td><td>The shard has been modified by unlicensed software. Kestrel recommends you return it to its owner.</td></tr>
         <tr><td>Damaged: n lost</td><td>Some parts of the shard are unreadable static and cannot be recovered.</td></tr>
       </table></div>
@@ -111,24 +114,17 @@ ShardView 4.2
 
     <section>
       <h2>5 <span>Expansion bays</span></h2>
-      <p>The DS-4 has <b>2 expansion bays</b> on its underside. Each bay holds one hardware module, and a module works with any software running on the deck. Remove a module to make room for another.</p>
-      <div class="tw"><table>
-        <tr><th>Module</th><th>Function</th></tr>
-        <tr><td>INDEXER</td><td>Labels the contents of each part of a shard.</td></tr>
-        <tr><td>AUTO-SCAN</td><td>Flags the most complex part of a shard.</td></tr>
-        <tr><td>SURVEY</td><td>Shows the complexity of every part of a shard.</td></tr>
-        <tr><td>EFFICIENCY</td><td>Lowers the power cost of diagnostic scans.</td></tr>
-        <tr><td>CO-PROC</td><td>Adds a co-processor for demanding applications.</td></tr>
-      </table></div>
+      <p>The DS-4 has <b>2 expansion bays</b> on its underside. Each bay holds one Kestrel-certified hardware module, and a module works with any software running on the deck. Remove a module to make room for another.</p>
+      <p>Ask your Kestrel retailer which modules suit the way you use your deck.</p>
     </section>
 
     <section>
       <h2>6 <span>Temperature</span></h2>
-      <p>Two red digits beside the screen show the deck's temperature in °C. The DS-4 warms up when it works hard and cools down by itself when idle.</p>
+      <p>The TEMP readout under the command line shows the deck's temperature in °C. The DS-4 warms up when it works hard and cools down by itself when idle.</p>
       <ul>
         <li>At <b>70 °C</b> the OVERHEAT light comes on. It blinks as the deck nears its limit.</li>
         <li>At <b>85 °C</b> the deck shuts itself off to protect its circuits. The keys stop working.</li>
-        <li>The blue bar above the digits fills as the deck cools. At <b>45 °C</b> it restarts on its own, with any module still in place.</li>
+        <li>The blue bar beside the readout fills as the deck cools. At <b>45 °C</b> it restarts on its own, with any module still in place.</li>
       </ul>
       <div class="note"><p><b>Tip.</b> Some third-party software runs the DS-4 much harder than it was designed for. If your deck keeps shutting down, give it time between tasks.</p></div>
     </section>
@@ -138,7 +134,8 @@ ShardView 4.2
       <div class="tw"><table>
         <tr><td>Model</td><td>Kestrel DataSystems DS-4, serial 44-0917</td></tr>
         <tr><td>Firmware</td><td>KFW2 with ShardView 4.2</td></tr>
-        <tr><td>Display</td><td>22-column monochrome screen with status LEDs</td></tr>
+        <tr><td>Display</td><td>22-column green phosphor screen, command line and status LEDs</td></tr>
+        <tr><td>Input</td><td>18-key strip keyboard: 0 to 9, A to F, ESC and RETURN</td></tr>
         <tr><td>Expansion</td><td>2 hardware bays, 1 AUX module port</td></tr>
         <tr><td>Thermal limits</td><td>Warning 70 °C, shutdown 85 °C, restart 45 °C</td></tr>
         <tr><td>Case</td><td>Impact-resistant putty polymer</td></tr>

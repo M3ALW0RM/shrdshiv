@@ -94,3 +94,71 @@
 .toast.pay{border-left-color:var(--good)} .toast.warn{border-left-color:var(--bad)} .toast.msg,.toast.buy{border-left-color:var(--accent)}
 .toast.out{opacity:0;transform:translateY(6px)}
 @media (prefers-reduced-motion:reduce){.book,.toast{transition:none}}
+
+/* ---- wallet: a framed readout so it doesn't float ---- */
+.wallet-box{align-items:center;gap:10px;background:var(--bench-2);border:1px solid var(--line);border-radius:6px;padding:4px 12px 4px 10px;box-shadow:inset 0 0 0 1px var(--bench-3)}
+.wallet-box b{line-height:1}
+#shopBtn{display:inline-flex;align-items:center;gap:8px}
+#shopBtn[hidden]{display:none}
+.cart-ico{width:18px;height:18px;flex:none}
+.shop-title{display:flex;align-items:center;gap:12px}
+.shop-title .cart-ico{width:30px;height:30px;color:var(--accent)}
+
+/* ---- messages as a terminal mail client (a screen, so it stays dark in both themes) ---- */
+.term{--t-bg:#07090a;--t-bg2:#0d1112;--t-line:#22302b;--t-fg:#e6dcc0;--t-dim:#8a8370;--t-acc:#ffb547;--t-ok:#8dffa8;
+  background:var(--t-bg);color:var(--t-fg);border-radius:8px;border:1px solid #000;box-shadow:inset 0 0 0 1px var(--t-line),0 6px 18px #0005;
+  font:13.5px/1.55 "IBM Plex Mono",ui-monospace,"Courier New",monospace;overflow:hidden}
+.term-bar{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;padding:6px 12px;background:var(--t-bg2);border-bottom:1px solid var(--t-line);font:400 17px/1.2 var(--f-screen);letter-spacing:.06em;color:var(--t-dim)}
+.term-bar b{color:var(--t-acc);font-weight:400}
+.term-bar span:last-child{margin-left:auto}
+.term-dots{display:flex;gap:5px}
+.term-dots i{width:9px;height:9px;border-radius:50%;background:#2a3330}
+.term-dots i:first-child{background:#d0574a}
+.term-main{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr)}
+@media (max-width:640px){.term-main{grid-template-columns:minmax(0,1fr)}.term-list{max-height:180px;border-right:0;border-bottom:1px solid var(--t-line)}}
+.term-list{list-style:none;margin:0;padding:6px 0;max-height:440px;overflow:auto;border-right:1px solid var(--t-line)}
+.term-row{appearance:none;width:100%;display:grid;grid-template-columns:auto auto auto minmax(0,1fr);gap:0 6px;align-items:baseline;text-align:left;background:transparent;border:0;color:var(--t-dim);cursor:pointer;font:inherit;font-size:12.5px;padding:3px 10px}
+.term-row .tr-n{color:#4d5650}
+.term-row .tr-m{color:var(--t-acc);width:1ch}
+.term-row .tr-from{color:var(--who);min-width:7ch}
+.term-row .tr-subj{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.term-row.unread .tr-subj{color:var(--t-fg);font-weight:600}
+.term-row:hover{background:#ffffff08}
+.term-row.on{background:var(--t-fg);color:var(--t-bg)}
+.term-row.on .tr-n,.term-row.on .tr-m,.term-row.on .tr-from{color:var(--t-bg)}
+.term-row:focus-visible{outline:2px solid var(--t-acc);outline-offset:-2px}
+.term-body{min-width:0;padding:12px 16px 14px;display:grid;gap:8px;align-content:start}
+.term-body .th{display:grid;grid-template-columns:6ch minmax(0,1fr);gap:8px}
+.term-body .k{color:var(--t-dim);letter-spacing:.06em}
+.term-body .th b{color:var(--who);font-weight:600}
+.term-body .dim,.jobs-open .dim{color:var(--t-dim)}
+.term-rule{height:0;border-top:1px dashed var(--t-line);margin:2px 0}
+.term-body p{margin:0;max-width:66ch}
+.term-att{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;margin-top:4px}
+.atts{display:flex;flex-wrap:wrap;gap:6px}
+.att{font:inherit;font-size:12.5px;color:var(--t-ok);border:1px solid #1f3a27;background:#0b140e;border-radius:3px;padding:1px 7px}
+button.att{appearance:none;cursor:pointer;color:var(--t-acc);border-color:#4a3714;background:#16110a;text-decoration:underline;text-underline-offset:3px}
+button.att:hover{background:#2a1f0d}
+button.att:focus-visible{outline:2px solid var(--t-acc);outline-offset:2px}
+.term-hint{border-left:2px solid var(--t-acc);padding:4px 10px;color:#cfc6ad;background:#ffffff06}
+.term-hint span{color:var(--t-acc)}
+.term-prompt{padding:6px 12px;border-top:1px solid var(--t-line);color:var(--t-dim);font:400 17px/1.2 var(--f-screen);letter-spacing:.04em}
+.t-cur{display:inline-block;width:.55em;height:.9em;background:var(--t-acc);transform:translateY(.12em);animation:cliblink 1.05s steps(1) infinite}
+@keyframes cliblink{50%{opacity:0}}
+.term-empty{margin:0;padding:16px;color:var(--t-dim)}
+@media (prefers-reduced-motion:reduce){.t-cur{animation:none}}
+
+/* ---- job bar under the deck ---- */
+.jobbar{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;background:var(--bench-2);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:8px 12px}
+.jobbar[hidden]{display:none}
+.jb-l{display:grid;gap:1px;min-width:0}
+.jb-l b{font-family:var(--f-display);letter-spacing:.04em}
+.jb-s{font-size:13px;color:var(--muted)}
+.btn.warn{border-color:var(--bad);color:var(--bad)}
+
+/* ---- jobs shelf at Rook's counter ---- */
+.jobs-intro{margin:0;color:var(--muted);max-width:70ch}
+.good.job{grid-template-rows:auto 1fr auto}
+.jobs-open{display:grid;gap:6px}
+.jobs-open ul{margin:0;padding-left:18px;display:grid;gap:3px}
+.jobs-open .dim{color:var(--muted)}

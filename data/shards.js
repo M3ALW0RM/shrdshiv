@@ -22,7 +22,7 @@ window.HR_SHARDS = [
   // ===== Act 1: the Stacks =====
   {id:"0042", name:"Curfew notice", color:"#6c8fa8", kind:"text", juice:0, key:null, sectors:[
     {lvl:0, type:"NOTICE", text:"CITY OF HAVENPORT. Curfew in the Stacks from 2200 to 0500."},
-    {lvl:0, type:"NOTICE", text:"Report unregistered decks to your block warden. Kestrel. We remember."}]},
+    {lvl:0, type:"NOTICE", text:"Report unregistered decks to your block warden. Kestrel. We never lose sight."}]},
 
   {id:"0588", name:"Night market flyer", color:"#5fa3a0", kind:"text", enc:"A", juice:12, key:"058814", sectors:[
     {lvl:1, type:"WHERE", text:"NIGHT MARKET under the Eighth Street overpass, Fridays after curfew."},

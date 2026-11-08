@@ -498,3 +498,45 @@ table.diff th,table.diff td{padding:5px 8px;border-bottom:1px solid var(--line);
 table.diff th{font-family:var(--f-display);font-size:11px;letter-spacing:.1em;color:var(--muted);font-weight:600}
 .scroll{overflow-x:auto}
 @media (prefers-reduced-motion:reduce){.oled.fx-tear,.oled.fx-shake,.oled.fx-flicker,.oled.fx-drop{animation:none}.oled.fx-sweep::before{display:none}.cart{transition:none}}
+
+/* ---- DS-4 as a terminal: phosphor CRT, command line, strip keyboard (same in both themes, it's a screen) ---- */
+.deck{--crt-bg:#030805; --crt:#8dffa8; --crt-dim:#3c7a4d; --crt-glow:0 0 4px #8dffa855; --crt-amber:#ffb547}
+.deck .bezel{background:#151613;border-radius:14px;padding:14px;box-shadow:0 3px 0 #fff3,0 -2px 0 #0005 inset,inset 0 0 0 2px #0b0c0a}
+.deck .oled{--oled:var(--crt);--oled-dim:var(--crt-dim);--oled-bg:var(--crt-bg);--oled-glow:var(--crt-glow);--scan:#0006;
+  border-radius:12px / 16px;background:radial-gradient(ellipse at 50% 45%, #0a1a0f 0%, var(--crt-bg) 70%, #000 100%);
+  box-shadow:inset 0 0 28px #000, inset 0 0 2px #8dffa833}
+.deck .oled::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:radial-gradient(ellipse at 50% 50%, transparent 62%, #0009 100%)}
+.deck .cli{display:flex;align-items:baseline;gap:0;margin-top:10px;padding:7px 12px;border-radius:6px;background:#020503;box-shadow:inset 0 0 10px #000, inset 0 0 0 1px #1d3324;
+  font-family:var(--f-screen);font-size:22px;line-height:1.1;color:var(--crt);text-shadow:var(--crt-glow);white-space:nowrap;overflow:hidden;min-height:40px}
+.deck .cli-p{color:var(--crt-dim);text-shadow:none}
+.deck .cli[data-typing="1"] .cli-p{color:var(--crt-amber);text-shadow:0 0 6px #ffb54780}
+.deck .cli-in{letter-spacing:.18em}
+.deck .cli-cur{display:inline-block;width:.55em;height:.9em;background:var(--crt);box-shadow:var(--crt-glow);transform:translateY(.12em);animation:cliblink 1.05s steps(1) infinite}
+@keyframes cliblink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.deck .cli-cur{animation:none}}
+.deck .therm{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 10px;width:auto;margin:10px 4px 0;padding:6px 12px;border-radius:6px;background:#020503;box-shadow:inset 0 0 0 1px #1d3324}
+.deck .therm-lbl{color:#5f8a6a;font:400 15px var(--f-screen);letter-spacing:.08em}
+.deck .therm-digits{font:400 24px/1 var(--f-screen);color:var(--crt);text-shadow:var(--crt-glow);min-width:2ch;display:inline-block}
+.deck .therm-digits.hot{color:#ff6a55;text-shadow:0 0 6px #ff6a5599}
+.deck .cool-bar i{width:9px;height:9px;border-radius:0;background:#0f2216}
+.deck .cool-bar i.on{background:#4fc3ff;box-shadow:0 0 6px #4fc3ff}
+.deck .ovh i{border-radius:2px}
+/* strip keyboard */
+.deck .keypad.kbd{grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;margin:14px 0 4px;padding:8px;background:#26241f;border-radius:8px;box-shadow:inset 0 2px 4px #000a}
+.deck .kbd .key{height:42px;border-radius:4px;display:grid;align-content:start;justify-items:start;padding:4px 6px;font:400 22px/1 var(--f-screen);color:#d9e8dc;
+  background:linear-gradient(#3b3d39,#2c2e2a);box-shadow:0 3px 0 #141512,inset 0 1px 0 #ffffff14;letter-spacing:0}
+.deck .kbd .key.hex{color:var(--crt-amber)}
+.deck .kbd .key.wide{grid-column:span 3;grid-template-columns:auto 1fr;align-items:baseline;gap:8px}
+.deck .kbd .key small{font:600 10px var(--f-display);letter-spacing:.18em;color:#9aa69c;justify-self:end}
+.deck .kbd .key.ent{background:linear-gradient(#3d5a45,#2a4232);color:var(--crt);box-shadow:0 3px 0 #13241a,inset 0 1px 0 #ffffff1a}
+.deck .kbd .key.ent small{color:#a8d8b4}
+.deck .kbd .kbd-gap{grid-column:span 2;align-self:center;text-align:center;font:600 9px var(--f-display);letter-spacing:.22em;color:#6d6654}
+.deck .kbd .key:active,.deck .kbd .key.pressed{transform:translateY(2px);box-shadow:0 1px 0 #141512}
+.deck .kbd .key:focus-visible{outline:2px solid var(--crt);outline-offset:1px}
+@media (max-width:420px){.deck .keypad.kbd{gap:4px;padding:6px}.deck .kbd .key{height:38px;font-size:19px;padding:3px 4px}.deck .kbd .key small{font-size:8px;letter-spacing:.1em}.deck .kbd .kbd-gap{font-size:7px;letter-spacing:.1em}}
+.deck.off .cli{filter:brightness(.08) saturate(0)}
+/* keep all 22 columns visible on narrow phones */
+.deck .bezel{container-type:inline-size}
+.deck .oled{font-size:min(21px, calc((100cqi - 52px) / 13.4))}
+.deck .cli{font-size:min(22px, calc((100cqi - 40px) / 13))}
